@@ -1,5 +1,12 @@
 {
   "name": "Constructables",
   "private": true,
-  "dependencies": {}
+  "dependencies": {},
+  "engines": {
+    "node": "10.6.0",
+    "npm": "6.1.0"
+  },
+  "scripts": {
+    "postinstall": "webpack"
+  }
 }
