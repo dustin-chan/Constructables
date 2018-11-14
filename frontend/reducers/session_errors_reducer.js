@@ -7,9 +7,7 @@ import merge from 'lodash/merge';
 export default (state = [], action) => {
   switch(action.type) {
     case RECEIVE_SESSION_ERRORS:
-      let newState = merge([], state);
-      newState.push(action.error);
-      return newState;
+      return action.errors;
     case RECEIVE_CURRENT_USER:
       return [];
     default:

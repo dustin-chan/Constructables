@@ -1,5 +1,5 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
 class SessionForm extends React.Component {
   constructor(props) {
@@ -31,10 +31,21 @@ class SessionForm extends React.Component {
   }
 
   render() {
+    const email = (
+      <div>
+        <label>Email:
+          <input
+            type="text"
+            value={this.state.email}
+            onChange={this.update('email')}
+            />
+        </label>
+        <br/>
+      </div>
+    );
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
-          {this.props.formType} or {this.props.navLink}
           {this.props.errors ? this.renderErrors() : ''}
           <br/>
           <div>
@@ -46,14 +57,7 @@ class SessionForm extends React.Component {
                 />
             </label>
             <br/>
-            <label>Email:
-              <input
-                type="text"
-                value={this.state.email}
-                onChange={this.update('email')}
-                />
-            </label>
-            <br/>
+              {this.props.formType === 'Sign Me Up !' ? email : ''}
             <label>Password:
               <input
                 type="password"
@@ -62,7 +66,7 @@ class SessionForm extends React.Component {
                 />
             </label>
             <br/>
-            <input type="submit" value={this.props.formType}/>
+            <input className="authButton" type="submit" value={this.props.formType}/>
           </div>
         </form>
       </div>
