@@ -44,8 +44,8 @@ class SessionForm extends React.Component {
       </div>
     );
     return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
+      <div id="login-wrapper">
+        <form className="login-form parallax_layer parallax_layer-base" onSubmit={this.handleSubmit}>
           {this.props.errors ? this.renderErrors() : ''}
           <br/>
           <div>
@@ -69,6 +69,7 @@ class SessionForm extends React.Component {
             <input className="authButton" type="submit" value={this.props.formType}/>
           </div>
         </form>
+        <div className="parallax_layer parallax_layer-back"/>
       </div>
     );
   }
