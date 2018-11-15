@@ -33,43 +33,45 @@ class SessionForm extends React.Component {
   render() {
     const email = (
       <div>
-        <label>Email:
-          <input
-            type="text"
-            value={this.state.email}
-            onChange={this.update('email')}
-            />
-        </label>
+        <input
+          className="input-large"
+          placeholder="Email"
+          type="text"
+          value={this.state.email}
+          onChange={this.update('email')}
+          />
         <br/>
       </div>
     );
     return (
-      <div id="login-wrapper">
-        <form className="login-form parallax_layer parallax_layer-base" onSubmit={this.handleSubmit}>
-          {this.props.errors ? this.renderErrors() : ''}
-          <br/>
-          <div>
-            <label>Username:
-              <input
-                type="text"
-                value={this.state.username}
-                onChange={this.update('username')}
-                />
-            </label>
+      <div className="parallax_group">
+        <div id="login-wrapper">
+          <form className="login-form parallax_layer parallax_layer-base" onSubmit={this.handleSubmit}>
+            {this.props.errors ? this.renderErrors() : ''}
             <br/>
-              {this.props.formType === 'Sign Me Up !' ? email : ''}
-            <label>Password:
-              <input
-                type="password"
-                value={this.state.password}
-                onChange={this.update('password')}
-                />
-            </label>
-            <br/>
-            <input className="authButton" type="submit" value={this.props.formType}/>
-          </div>
-        </form>
-        <div className="parallax_layer parallax_layer-back"/>
+            <div className="form-input">
+                <input
+                  className="input-large"
+                  placeholder="Username"
+                  type="text"
+                  value={this.state.username}
+                  onChange={this.update('username')}
+                  />
+              <br/>
+                {this.props.formType === 'Sign Me Up !' ? email : ''}
+                <input
+                  className="input-large"
+                  placeholder="Password"
+                  type="password"
+                  value={this.state.password}
+                  onChange={this.update('password')}
+                  />
+              <br/>
+              <input className="authButton" type="submit" value={this.props.formType}/>
+            </div>
+          </form>
+          <div className="parallax_layer parallax_layer-back"/>
+        </div>
       </div>
     );
   }

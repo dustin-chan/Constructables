@@ -74,13 +74,11 @@
   min-width: 1030px;
   line-height: 21px;
   background: #404040;
-  position: absolute;
-  height: 60px;
-  bottom: 0;
+  position: static;
   display: block;
   z-index: 1;
   padding-top: 30px;
-
+  height: 300px;
 }
 
 .hero {
@@ -90,6 +88,8 @@
   width: 100%;
   min-width: 1030px;
   z-index: 0;
+  background-image: url(craft_leaves.jpg);
+  background-size: cover;
 }
 
 .projects {
@@ -104,12 +104,13 @@
 }
 
 #login-wrapper {
-
+  align-self: center;
 }
 
 .login-form {
   padding-top: 160px;
   padding-left: 60px;
+  margin-left: 60px;
   background: rgba(34, 34, 34, .25);
   height: 845px;
   width: 400px;
@@ -118,17 +119,20 @@
 }
 
 .parallax {
-  position: relative;
-  perspective: 300px;
-  transform-style: preserve-3d;
-  height: 100vh;
+  perspective: 200px;
   overflow-x: hidden;
   overflow-y: auto;
 }
 
+.parallax_group {
+  position: relative;
+  transform-style: preserve-3d;
+  height: 100vh;
+}
+
 .parallax_layer {
   position: absolute;
-  top: 0;
+  top: -500;
   right: 0;
   bottom: 0;
   left: 0;
@@ -143,10 +147,68 @@ div {
 }
 
 .parallax_layer-back {
-  transform: translateZ(-300px) scale(2.2);
+  transform: translateZ(-200px) scale(2.4);
   z-index: -2;
-  background-image: url(craft_leaves.jpg);
+  background-image: url(fish_mobiles.jpg);
   background-size: cover;
   height: 940px;
   min-width: 1030px;
+}
+
+input-large {
+  font-size: 16px;
+  line-height: 20px;
+  height: auto;
+  /* padding: 9px 11px; */
+  box-sizing: border-box;
+}
+
+.login-form input {
+  width: 100%;
+  margin-bottom: 20px;
+  height: 28px;
+  width: 330px;
+}
+
+input, textarea {
+  color: #555;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, .07);
+}
+
+input[type=text], input[type=password], input[type=submit] {
+  padding: 4px 6px;
+}
+
+input[type=submit] {
+  text-align: center;
+  color: #fff;
+  background-color: #e86c00;
+  border-color: #cf6000;
+}
+
+.form-input {
+  margin: auto;
+}
+
+* {
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+.bottom-bar {
+  background-color: #fff;
+}
+
+.bottom-bar h3 {
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 38px;
+  padding-left: 12px;
+  padding-right: 12px;
+  cursor: pointer;
+  color: rgb(153, 153, 153);
+  box-sizing: content-box;
+  display: inline;
 }

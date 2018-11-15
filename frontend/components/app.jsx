@@ -17,11 +17,23 @@ const App = ({store}) => {
           </Link>
           <HeaderAuthContainer store={store}/>
         </div>
+        <div className="bottom-bar">
+          <Link to="/">
+            <h3>Classes</h3>
+          </Link>
+          <Link to="/">
+            <h3>Contests</h3>
+          </Link>
+          <Link to="/">
+            <h3>Community</h3>
+          </Link>
+          <Link to="/">
+            <h3>Education</h3>
+          </Link>
+        </div>
       </header>
-      <div>
         <AuthRoute exact path="/login" component={LogInFormContainer}/>
         <AuthRoute exact path="/signup" component={SignUpFormContainer}/>
-      </div>
         <Route exact path="/" component={Home} />
       <footer id="gbl-footer" className="parallax_layer parallax_layer-base"></footer>
     </div>
