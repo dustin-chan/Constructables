@@ -1,8 +1,10 @@
 import * as APIUtil from '../util/session_api_util';
+import { fetchUser } from '../util/user_api_util';
 
 export const RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER';
 export const LOGOUT_CURRENT_USER = 'LOGOUT_CURRENT_USER';
 export const RECEIVE_SESSION_ERRORS = 'RECEIVE_SESSION_ERRORS';
+export const REMOVE_ERRORS = 'REMOVE_ERRORS';
 
 export const receiveCurrentUser = currentUser => {
   return {
@@ -17,6 +19,13 @@ export const logOutCurrentUser = () => {
   };
 };
 
+export const removeErrors = () => {
+  return {
+    type: REMOVE_ERRORS,
+    errors: {}
+  };
+};
+
 export const receiveErrors = errors => {
   return {
     type: RECEIVE_SESSION_ERRORS,
@@ -25,8 +34,8 @@ export const receiveErrors = errors => {
 };
 
 export const signUp = user => dispatch => {
-  return APIUtil.signUp(user).then(user => (dispatch(receiveCurrentUser(user))),
-    err => (dispatch(receiveErrors(err.responseJSON))));
+  return APIUtil.signUp(user).then(user => dispatch(receiveCurrentUser(user)),
+    err => dispatch(receiveErrors(err.responseJSON)));
 };
 
 export const logIn = user => dispatch => {
@@ -36,4 +45,8 @@ export const logIn = user => dispatch => {
 
 export const logOut = () => dispatch => {
   return APIUtil.logOut().then(() => dispatch(logOutCurrentUser()));
+};
+
+export const requestUser = id => dispatch => {
+  return fetchUser(id).then(user => dispatch(receiveCurrentUser(user)));
 };

@@ -1,11 +1,15 @@
 import React from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 class SessionForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {username: '', email: '', password: ''};
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  componentWillUnmount() {
+    this.props.removeErrors();
   }
 
   update(field) {
@@ -17,14 +21,14 @@ class SessionForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const user = Object.assign({}, this.state);
-    this.props.processForm(user);
+    this.props.processForm(user).then(stuff => this.props.history.push(`/users/${stuff.currentUser.id}`));
   }
 
   renderErrors() {
     return(
       <ul>
         {this.props.errors.map((error, i) => (
-          <li key={`error-${i}`}>{error}</li>
+          <li className="auth_error" key={`error-${i}`}>{error}</li>
         ))}
       </ul>
     );
@@ -47,7 +51,7 @@ class SessionForm extends React.Component {
       <div className="parallax_group">
         <div id="login-wrapper">
           <form className="login-form parallax_layer parallax_layer-base" onSubmit={this.handleSubmit}>
-            {this.props.errors ? this.renderErrors() : ''}
+            {this.renderErrors()}
             <br/>
             <div className="form-input">
                 <input
