@@ -3,7 +3,7 @@ import FeaturedProjects from './featured_projects';
 
 const Projects = () => {
   return (
-    <div className="projects">
+    <div className="projects parallax_layer parallax_base">
       <FeaturedProjects/>
     </div>
   );

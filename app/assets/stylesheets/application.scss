@@ -122,12 +122,12 @@ html {
 }
 
 .hero {
-  min-height: 650px;
-  max-height: 700px;
-  height: 77%;
-  width: 100%;
-  min-width: 1030px;
-  z-index: 0;
+  // min-height: 650px;
+  // max-height: 700px;
+  // height: 77%;
+  // width: 100%;
+  // min-width: 1030px;
+  // z-index: 0;
   background-image: image-url('craft_leaves.jpg');
   background-size: cover;
 }
@@ -141,6 +141,7 @@ html {
   min-width: 1030px;
   border-top: 1px solid rgba(0, 0, 0, .25);
   overflow-x: hidden;
+  margin-top: 750px;
 }
 
 #login-wrapper {
@@ -159,15 +160,22 @@ html {
 }
 
 .parallax {
-  perspective: 200px;
+  perspective: 1px;
+  height: 100vh;
   overflow-x: hidden;
   overflow-y: auto;
+  transition-property: all;
+  transition-duration: 0.4s;
+  transition-timing-function: cubic-bezier(0, 0, 0, 1);
 }
 
 .parallax_group {
   position: relative;
+  height: 940px;
   transform-style: preserve-3d;
-  height: 100vh;
+  transition-property: all;
+  transition-duration: 0.4s;
+  transition-timing-function: cubic-bezier(0, 0, 0, 1);
 }
 
 .parallax_layer {
@@ -176,20 +184,36 @@ html {
   right: 0;
   bottom: 0;
   left: 0;
+  transition-property: all;
+  transition-duration: 0.4s;
+  transition-timing-function: cubic-bezier(0, 0, 0, 1);
 }
 div {
   display: block;
 }
 
-.parallax_layer-base {
+.parallax_base {
   transform: translateZ(0);
   z-index: -1;
 }
 
-.parallax_layer-back {
-  transform: translateZ(-200px) scale(2.4);
+.login-form {
+  position: absolute;
+}
+
+.parallax_back {
+  transform: translateZ(-1px) scale(2.1);
   z-index: -2;
   background-image: image-url('fish_mobiles.jpg');
+  background-size: cover;
+  height: 940px;
+  min-width: 1030px;
+}
+
+.parallax_back_hero {
+  transform: translateZ(-1px) scale(2.1);
+  z-index: -2;
+  background-image: image-url('craft_leaves.jpg');
   background-size: cover;
   height: 940px;
   min-width: 1030px;
