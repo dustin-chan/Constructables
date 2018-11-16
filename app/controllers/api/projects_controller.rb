@@ -29,13 +29,12 @@ class Api::ProjectsController < ApplicationController
   def destroy
     @project = Project.find(params[:id])
     @project.destroy
-
   end
 
   private
 
   def project_params
     params.require(:project).permit(:image_url, :featured, :category, :description,
-      step_attributes: [ :image_url, :body ])
+      step_attributes: [ :photoUrl, :body ])
   end
 end
