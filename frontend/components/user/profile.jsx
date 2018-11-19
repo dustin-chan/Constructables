@@ -21,7 +21,7 @@ class UserProfile extends React.Component {
       description = this.props.user.description;
     }
     return (
-      <div>
+      <div className="profile_content">
         <div className="avatar-large"/>
         <ul>
           <li>{username}</li>

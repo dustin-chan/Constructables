@@ -1,7 +1,17 @@
-import { combineReducers } from 'redux';
+import {
+  RECEIVE_ALL_PROJECTS,
+  RECEIVE_PROJECT,
+  REMOVE_PROJECT
+} from '../actions/project_actions';
+import merge from 'lodash/merge';
 
-import users from './users_reducer';
-
-export default combineReducers({
-  users,
-});
+export default (state = {}, action) => {
+  switch(action.type) {
+    case RECEIVE_ALL_PROJECTS:
+      return merge({}, state, action.projects);
+    case REMOVE_PROJECT:
+      return {};
+    default:
+      return state;
+  }
+};

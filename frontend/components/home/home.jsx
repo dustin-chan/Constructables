@@ -1,12 +1,14 @@
 import React from 'react';
 import Hero from './hero';
-import Projects from './projects';
+import FeaturedProjectsContainer from '../projects/featured_projects_container';
 
 const Home = () => {
   return (
     <div>
       <Hero />
-      <Projects />
+      <div className="featured_projects">
+        <FeaturedProjectsContainer />
+      </div>
     </div>
   );
 };

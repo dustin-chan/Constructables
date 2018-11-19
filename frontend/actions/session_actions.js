@@ -6,14 +6,14 @@ export const LOGOUT_CURRENT_USER = 'LOGOUT_CURRENT_USER';
 export const RECEIVE_SESSION_ERRORS = 'RECEIVE_SESSION_ERRORS';
 export const REMOVE_ERRORS = 'REMOVE_ERRORS';
 
-export const receiveCurrentUser = currentUser => {
+const receiveCurrentUser = currentUser => {
   return {
     type: RECEIVE_CURRENT_USER,
     currentUser
   };
 };
 
-export const logOutCurrentUser = () => {
+const logOutCurrentUser = () => {
   return {
     type: LOGOUT_CURRENT_USER,
   };
@@ -26,7 +26,7 @@ export const removeErrors = () => {
   };
 };
 
-export const receiveErrors = errors => {
+const receiveErrors = errors => {
   return {
     type: RECEIVE_SESSION_ERRORS,
     errors

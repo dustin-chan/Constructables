@@ -10,7 +10,7 @@ class Api::ProjectsController < ApplicationController
   end
 
   def index
-    @projects = Project.all
+    @projects = Project.where(featured: :true).includes(:user)
   end
 
   def show
@@ -34,7 +34,7 @@ class Api::ProjectsController < ApplicationController
   private
 
   def project_params
-    params.require(:project).permit(:image_url, :featured, :category, :description,
-      step_attributes: [ :photoUrl, :body ])
+      params.require(:project).permit(:title, :featured, :category, :description,
+        :steps_attributes => [:photoUrl, :body])
   end
 end

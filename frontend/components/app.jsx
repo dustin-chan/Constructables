@@ -5,6 +5,8 @@ import SignUpFormContainer from './session_form/sign_up_form_container';
 import LogInFormContainer from './session_form/log_in_form_container';
 import HeaderAuthContainer from './header/auth_container';
 import UserProfileContainer from './user/profile_container';
+import FeaturedProjectsContainer from './projects/featured_projects_container';
+import ProjectShowContainer from './projects/project_show_container';
 import Home from './home/home';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 
@@ -34,10 +36,12 @@ const App = ({store}) => {
         </div>
       </header>
 
-      <AuthRoute exact path="/login" component={LogInFormContainer}/>
-      <AuthRoute exact path="/signup" component={SignUpFormContainer}/>
       <Route exact path="/" component={Home} />
-      <ProtectedRoute exact path="/users/:userId" component={UserProfileContainer}/>
+      <Route exact path="/featured/" component={FeaturedProjectsContainer} />
+      <Route exact path="/projects/:projectId" component={ProjectShowContainer} />
+      <AuthRoute exact path="/login" component={LogInFormContainer} />
+      <AuthRoute exact path="/signup" component={SignUpFormContainer} />
+      <ProtectedRoute exact path="/users/:userId" component={UserProfileContainer} />
 
       <footer id="gbl-footer"></footer>
     </div>

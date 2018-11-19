@@ -1,11 +1,15 @@
 import React from 'react';
 
-const Hero = () => {
-  return (
-    <div>
-      <div className="hero" data-parallax="scroll" data-image-src={window.craft_leaves}></div>
-    </div>
-  );
+class Hero extends React.Component {
+  componentDidMount() {
+    $('.hero').parallax({imageSrc: `${window.craft_leaves}`});
+  }
+
+  render() {
+    return (
+        <div className="hero"></div>
+    );
+  }
 };
 
 export default Hero;

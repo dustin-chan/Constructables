@@ -46,7 +46,6 @@
     }
 
     this.$element = $(element);
-
     if (!this.imageSrc && this.$element.is('img')) {
       this.imageSrc = this.$element.attr('src');
     }
@@ -405,8 +404,8 @@
 
   // Parallax Data-API
 
-  $( function () { 
-    $('[data-parallax="scroll"]').parallax(); 
+  $( function () {
+    $('[data-parallax="scroll"]').parallax();
   });
 
 }(jQuery, window, document));

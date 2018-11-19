@@ -12,7 +12,7 @@
 //
 //= require rails-ujs
 //= require activestorage
-//= require_tree .
-//= require_parallax
 //= require jquery
 //= require jquery_ujs
+//= require parallax
+//= require_tree .

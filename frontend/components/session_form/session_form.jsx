@@ -12,6 +12,10 @@ class SessionForm extends React.Component {
     this.props.removeErrors();
   }
 
+  componentDidMount() {
+    $('#login-wrapper').parallax({imageSrc: `${window.glassblowing}`});
+  }
+
   update(field) {
     return e => this.setState({
       [field]: e.target.value

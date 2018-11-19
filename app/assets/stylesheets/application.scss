@@ -18,43 +18,14 @@ body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
-.auth_error {
-  color: #fff;
-  background-color: red;
-  border-radius: 4px;
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, .07);
-  width: 100%;
-  min-height: 28px;
-  width: 330px;
-}
 
-.login {
-  border-right: 1px solid lightgrey;
-  padding: 0px 5px;
-  cursor: pointer;
-  text-decoration: none;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  color: #777;
-  font-size: 12px;
-}
 
-.login-signup {
-  position: absolute;
-  right: 25px;
-}
-
-.authButton:hover {
-  background-color: #cf6000;
-  transition-duration: .4s;
-}
-
-.signup {
-  padding: 0px 0px 0px 5px;
-  cursor: pointer;
-  text-decoration: none;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  color: #777;
-  font-size: 12px;
+.avatar-large {
+  background-image: image-url('user/user.SQUARE2.png');
+  height: 116px;
+  width: 116px;
+  border-radius: 58px;
+  background-size: cover;
 }
 
 #gbl-header h1 {
@@ -92,40 +63,15 @@ body {
   right: 80px;
 }
 
-.logout {
-  position: absolute;
-  padding: 0px 0px 0px 5px;
-  cursor: pointer;
-  text-decoration: none;
-  color: #777;
-  font-size: 12px;
-  position: absolute;
-  right: 25px;
-  top: 35px;
-}
-
-.demo {
-  position: absolute;
-  text-align: center;
-  width: 330px;
-  height: 28px;
-  border: 1px solid #7c7cea;
-  color: white;
-  background-color: #58d0f7;
-  border-radius: 5px;
-  z-index: 1;
-  margin-left: 120px;
-  margin-top: 140px;
-  padding: 4px 6px;
-}
-
-.demo:hover {
-  transition-duration: .4s;
-  background-color: #7c7cea;
-}
-
 #gbl-footer, #gbl-header {
   min-width: initial;
+}
+
+.profile_content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 222px;
 }
 
 #gbl-footer {
@@ -149,9 +95,9 @@ body {
   width: 100%;
   min-width: 1030px;
   // z-index: 0;
-  background-image: image-url('craft_leaves.jpg');
-  // background: transparent;
+  background: transparent;
   background-size: cover;
+
 }
 
 .projects {
@@ -166,55 +112,6 @@ body {
   margin-top: 750px;
 }
 
-#login-wrapper {
-  align-self: center;
-  width: 100%;
-  height: 940px;
-  min-width: 1030px;
-  background-image: image-url('glassblowing.jpg');
-  background-size: cover;
-}
-
-.login-form {
-  padding-top: 160px;
-  padding-left: 60px;
-  margin-left: 60px;
-  background: rgba(34, 34, 34, .25);
-  height: 845px;
-  width: 400px;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  z-index: 0;
-}
-
-.parallax {
-  perspective: 1px;
-  height: 100vh;
-  overflow-x: hidden;
-  overflow-y: auto;
-  transition-property: all;
-  transition-duration: 0.4s;
-  transition-timing-function: cubic-bezier(0, 0, 0, 1);
-}
-
-.parallax_group {
-  position: relative;
-  height: 940px;
-  transform-style: preserve-3d;
-  transition-property: all;
-  transition-duration: 0.4s;
-  transition-timing-function: cubic-bezier(0, 0, 0, 1);
-}
-
-.parallax_layer {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  transition-property: all;
-  transition-duration: 0.4s;
-  transition-timing-function: cubic-bezier(0, 0, 0, 1);
-}
 div {
   display: block;
 }
@@ -224,42 +121,12 @@ div {
   z-index: -1;
 }
 
-.login-form {
-  position: absolute;
-}
-
-.parallax_back {
-  transform: translateZ(-1px) scale(2.1);
-  z-index: -2;
-  background-image: image-url('fish_mobiles.jpg');
-  background-size: cover;
-  height: 940px;
-  min-width: 1030px;
-}
-
-.parallax_back_hero {
-  transform: translateZ(-1px) scale(2.1);
-  z-index: -2;
-  background-image: image-url('craft_leaves.jpg');
-  background-size: cover;
-  height: 940px;
-  min-width: 1030px;
-}
-
 input-large {
   font-size: 16px;
   line-height: 20px;
   height: auto;
   /* padding: 9px 11px; */
   box-sizing: border-box;
-}
-
-.login-form input {
-  width: 100%;
-  margin-bottom: 20px;
-  padding-top: 160px;
-  height: 28px;
-  width: 330px;
 }
 
 input, textarea {

@@ -1,7 +1,7 @@
 class Step < ApplicationRecord
-  belongs_to :project
+  validates :body, presence: true
 
-  #custom validation if neither present must be one
+  belongs_to :project
 
   has_one_attached :photo
 end
