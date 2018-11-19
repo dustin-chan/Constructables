@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const HeaderAuth = ({currentUser, logOut}) => {
+const HeaderAuth = ({currentUser, logOut, logIn}) => {
   const avatar = (
     <div>
       <div className="avatar"/>

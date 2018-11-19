@@ -4,7 +4,7 @@ import Projects from './projects';
 
 const Home = () => {
   return (
-    <div className="parallax_group">
+    <div>
       <Hero />
       <Projects />
     </div>

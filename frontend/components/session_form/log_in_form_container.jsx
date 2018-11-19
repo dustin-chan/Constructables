@@ -5,6 +5,7 @@ import { logIn, removeErrors } from '../../actions/session_actions';
 import SessionForm from './session_form';
 
 const msp = ({ errors }) => {
+
   return {
     errors: errors,
     formType: 'Login',
@@ -12,7 +13,9 @@ const msp = ({ errors }) => {
 };
 
 const mdp = dispatch => {
+
   return {
+    logIn: (user) => dispatch(logIn(user)),
     processForm: (user) => dispatch(logIn(user)),
     removeErrors: () => dispatch(removeErrors())
   };

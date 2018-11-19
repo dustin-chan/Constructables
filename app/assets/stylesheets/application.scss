@@ -43,6 +43,11 @@ body {
   right: 25px;
 }
 
+.authButton:hover {
+  background-color: #cf6000;
+  transition-duration: .4s;
+}
+
 .signup {
   padding: 0px 0px 0px 5px;
   cursor: pointer;
@@ -50,7 +55,6 @@ body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #777;
   font-size: 12px;
-
 }
 
 #gbl-header h1 {
@@ -100,6 +104,26 @@ body {
   top: 35px;
 }
 
+.demo {
+  position: absolute;
+  text-align: center;
+  width: 330px;
+  height: 28px;
+  border: 1px solid #7c7cea;
+  color: white;
+  background-color: #58d0f7;
+  border-radius: 5px;
+  z-index: 1;
+  margin-left: 120px;
+  margin-top: 140px;
+  padding: 4px 6px;
+}
+
+.demo:hover {
+  transition-duration: .4s;
+  background-color: #7c7cea;
+}
+
 #gbl-footer, #gbl-header {
   min-width: initial;
 }
@@ -107,28 +131,26 @@ body {
 #gbl-footer {
   color: #999;
   font-size: 14px;
+  width: 100%;
   min-width: 1030px;
   line-height: 21px;
   background: #404040;
-  position: static;
+  position: absolute;
   display: block;
-  z-index: 1;
+  z-index: 4;
   padding-top: 30px;
   height: 300px;
 }
 
-html {
-  overflow-y: hidden;
-}
-
 .hero {
-  // min-height: 650px;
-  // max-height: 700px;
+  min-height: 650px;
+  max-height: 700px;
   // height: 77%;
-  // width: 100%;
-  // min-width: 1030px;
+  width: 100%;
+  min-width: 1030px;
   // z-index: 0;
   background-image: image-url('craft_leaves.jpg');
+  // background: transparent;
   background-size: cover;
 }
 
@@ -146,6 +168,11 @@ html {
 
 #login-wrapper {
   align-self: center;
+  width: 100%;
+  height: 940px;
+  min-width: 1030px;
+  background-image: image-url('glassblowing.jpg');
+  background-size: cover;
 }
 
 .login-form {

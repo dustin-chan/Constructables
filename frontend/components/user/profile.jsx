@@ -4,14 +4,22 @@ import { Link, withRouter } from 'react-router-dom';
 class UserProfile extends React.Component {
   constructor(props) {
     super(props);
+    this.requestUser = this.props.requestUser.bind(this);
   }
 
   componentDidMount() {
-    this.props.requestUser(this.props.match.params.userId);
+    this.requestUser(this.props.match.params.userId);
   }
 
   render() {
-    const {username, email, description} = this.props.user;
+    let username;
+    let email;
+    let description;
+    if (this.props.user) {
+      username = this.props.user.username;
+      email = this.props.user.email;
+      description = this.props.user.description;
+    }
     return (
       <div>
         <div className="avatar-large"/>

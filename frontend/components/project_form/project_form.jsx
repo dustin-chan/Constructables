@@ -58,26 +58,24 @@ class SessionForm extends React.Component {
           {this.renderErrors()}
           <br/>
           <br/>
-          <div className="form-input">
-              <input
-                className="input-large"
-                placeholder="Username"
-                type="text"
-                value={this.state.username}
-                onChange={this.update('username')}
-                />
-            <br/>
-              {this.props.formType === 'Sign Me Up !' ? email : ''}
-              <input
-                className="input-large"
-                placeholder="Password"
-                type="password"
-                value={this.state.password}
-                onChange={this.update('password')}
-                />
-            <br/>
-            <input className="authButton" type="submit" value={this.props.formType}/>
-          </div>
+            <input
+              className="input-large"
+              placeholder="Username"
+              type="text"
+              value={this.state.username}
+              onChange={this.update('username')}
+              />
+          <br/>
+            {this.props.formType === 'Sign Me Up !' ? email : ''}
+            <input
+              className="input-large"
+              placeholder="Password"
+              type="password"
+              value={this.state.password}
+              onChange={this.update('password')}
+              />
+          <br/>
+          <input className="authButton" type="submit" value={this.props.formType}/>
         </form>
       </div>
     );

@@ -14,7 +14,7 @@ class Api::ProjectsController < ApplicationController
   end
 
   def show
-    @project = Project.find(params[:id])
+    @project = Project.includes(:steps).find(params[:id])
   end
 
   def edit

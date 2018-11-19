@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { logOut } from '../../actions/session_actions';
+import { logIn, logOut } from '../../actions/session_actions';
 import HeaderAuth from './auth';
 
 const msp = ({session, entities: {users}}) => {
@@ -12,7 +12,8 @@ const msp = ({session, entities: {users}}) => {
 
 const mdp = dispatch => {
   return {
-    logOut: () => dispatch(logOut())
+    logOut: () => dispatch(logOut()),
+    logIn: user => dispatch(logIn(user))
   };
 };
 

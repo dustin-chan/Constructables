@@ -46,7 +46,3 @@ export const logIn = user => dispatch => {
 export const logOut = () => dispatch => {
   return APIUtil.logOut().then(() => dispatch(logOutCurrentUser()));
 };
-
-export const requestUser = id => dispatch => {
-  return fetchUser(id).then(user => dispatch(receiveCurrentUser(user)));
-};
