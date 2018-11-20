@@ -9,6 +9,8 @@ class User < ApplicationRecord
 
   has_many :projects
 
+  has_one_attached :photo
+
   def self.find_by_credentials(username, password)
     user = self.find_by(username: username)
     user && user.is_password?(password) ? user : nil
