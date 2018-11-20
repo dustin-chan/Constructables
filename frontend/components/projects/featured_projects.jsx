@@ -9,12 +9,15 @@ class FeaturedProjects extends React.Component {
   render() {
 
     const projects = this.props.projects.map(project => {
-      return <FeaturedProjectItem project={project} />;
+      return <FeaturedProjectItem key={project.id} project={project} />;
     });
     return (
-      <ul>
-        {projects}
-      </ul>
+      <div>
+        <h3 className="section_title">Featured</h3>
+        <ul className="featured_projects">
+          {projects}
+        </ul>
+      </div>
     );
   }
 }

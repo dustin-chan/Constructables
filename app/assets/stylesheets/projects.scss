@@ -1,3 +1,39 @@
 // Place all the styles related to the Projects controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.featured_projects {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 50px;
+  background-color: white;
+}
+
+.featured_project_item {
+  position: relative;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  width: 323px;
+  height: 349px;
+  background-color: lightgrey;
+  margin: 10px;
+  border-radius: 2.25%;
+  box-shadow: inset 1px 1px 1px rgba(0, 0, 0, .25);
+}
+
+.featured_project_item > .project_details {
+  display: flex;
+  flex-direction: column;
+  margin-top: 300px;
+  margin-left: 15px;
+  background-color: black;
+}
+
+.featured_project_item .project_detail {
+}
+
+.section_title {
+  position: absolute;
+  left: 110px;
+}
