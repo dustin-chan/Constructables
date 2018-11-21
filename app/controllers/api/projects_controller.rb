@@ -14,7 +14,7 @@ class Api::ProjectsController < ApplicationController
   end
 
   def show
-    @project = Project.includes(:steps).find(params[:id])
+    @project = Project.includes(:steps).includes(:user).find(params[:id])
   end
 
   def edit
@@ -35,6 +35,6 @@ class Api::ProjectsController < ApplicationController
 
   def project_params
       params.require(:project).permit(:title, :featured, :category, :description,
-        :steps_attributes => [:photoUrl, :body])
+        :steps_attributes => [:body])
   end
 end

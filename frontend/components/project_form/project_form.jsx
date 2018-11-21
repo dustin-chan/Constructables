@@ -1,11 +1,14 @@
 import React from 'react';
 import { Link, Redirect } from 'react-router-dom';
+import ReactQuill from 'react-quill';
 
-class SessionForm extends React.Component {
+class ProjectForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {username: '', email: '', password: ''};
+    this.state = {title: '', category: '', description: '', steps_attributes: []};
+    this.defaultStep = "defaultStep";
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.addStep = this.addStep.bind(this);
   }
 
   componentWillUnmount() {
@@ -20,21 +23,59 @@ class SessionForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    const user = Object.assign({}, this.state);
-    this.props.processForm(user).then(res => this.props.history.push(`/users/${res.currentUser.id}`));
+    const project = Object.assign({}, this.state);
+    this.props.processForm(project).then(res => this.props.history.push(`/projects/${res.project.id}`));
+  }
+
+  addStep() {
+    this.state.steps_attributes += this.defaultStep;
+    // HOW TO CAUSE RE-RENDER?
   }
 
   renderErrors() {
-    return(
-      <ul>
-        {this.props.errors.map((error, i) => (
-          <li className="auth_error" key={`error-${i}`}>{error}</li>
-        ))}
-      </ul>
-    );
+    // return(
+    //   <ul>
+    //     {this.props.errors.map((error, i) => (
+    //       <li className="auth_error" key={`error-${i}`}>{error}</li>
+    //     ))}
+    //   </ul>
+    // );
   }
 
   render() {
+
+    const quillModules = {
+            toolbar: [
+              [{ 'header': '1'}, {'header': '2'}, {'font': []}],
+        [{size: []}],
+        ['background', 'color', 'bold', 'italic',
+        'underline', 'strike', 'script'],
+        [{'list': 'ordered'}, {'list': 'bullet'},
+         {'indent': '-1'}, {'indent': '+1'}, {'align': []}],
+        ['link', 'image', 'video'],
+        ['clean']
+      ],
+    }
+
+    const quillFormats = [
+      "background",
+      "bold",
+      "color",
+      "font",
+      "italic",
+      "link",
+      "size",
+      "strike",
+      "script",
+      "underline",
+      "header",
+      "indent",
+      "list",
+      "align",
+      "direction",
+      "image",
+      "video"
+    ];
 
     const email = (
       <div>
@@ -48,38 +89,51 @@ class SessionForm extends React.Component {
         <br/>
       </div>
     );
-    const demoLogIn = () => this.props.logIn(
-        {username: 'username', password: 'password'}
-      ).then(res => this.props.history.push(`/users/${res.currentUser.id}`));
+
+    // const steps = this.state.steps_attributes.map();
+
     return (
-      <div id="login-wrapper">
-        <button className="demo" onClick={demoLogIn}>Demo</button>
-        <form className="login-form" onSubmit={this.handleSubmit}>
+      <div id="project-form-wrapper">
+        <form className="project-form" onSubmit={this.handleSubmit}>
+          <br/>
+          <br/>
+          <label>Title
+            <input
+              className="input-large"
+              placeholder="Title"
+              type="text"
+              value={this.state.title}
+              onChange={this.update('title')}
+              />
+          </label>
+          <br/>
+          <label>Introduction
+            <textarea
+              className="input-large"
+              placeholder="Introduction"
+              type="password"
+              value={this.state.description}
+              onChange={this.update('description')}
+              />
+          </label>
+          <br/>
+            <ReactQuill
+              className="quill"
+              modules={quillModules}
+              formats={quillFormats}
+              theme="snow"
+              value={this.state.description}
+              onChange={this.update('description')}
+              />
+          <br/>
           {this.renderErrors()}
           <br/>
-          <br/>
-            <input
-              className="input-large"
-              placeholder="Username"
-              type="text"
-              value={this.state.username}
-              onChange={this.update('username')}
-              />
-          <br/>
-            {this.props.formType === 'Sign Me Up !' ? email : ''}
-            <input
-              className="input-large"
-              placeholder="Password"
-              type="password"
-              value={this.state.password}
-              onChange={this.update('password')}
-              />
-          <br/>
-          <input className="authButton" type="submit" value={this.props.formType}/>
+          <input className="project-submit" type="submit" value={this.props.formType}/>
+          <button onClick={() => addStep()}>Add Step</button>
         </form>
       </div>
     );
   }
 }
 
-export default SessionForm;
+export default ProjectForm;

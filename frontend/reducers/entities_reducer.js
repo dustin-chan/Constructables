@@ -8,6 +8,4 @@ import steps from './steps_reducer';
 export default combineReducers({
   users,
   projects,
-  project,
-  steps
 });

@@ -119,7 +119,7 @@
     if (slider.length == 0)
       this.$slider = $('<img />').prependTo(this.$mirror);
     else {
-      this.$slider = slider.prependTo(this.$mirror)
+      this.$slider = slider.prependTo(this.$mirror);
       sliderExisted = true;
     }
 

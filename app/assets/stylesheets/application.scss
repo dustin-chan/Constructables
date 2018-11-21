@@ -67,12 +67,6 @@ body {
   min-width: initial;
 }
 
-.profile_content {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 222px;
-}
 
 #gbl-footer {
   color: #999;
@@ -94,10 +88,7 @@ body {
   // height: 77%;
   width: 100%;
   min-width: 1030px;
-  // z-index: 0;
-  background: transparent;
-  background-size: cover;
-
+  z-index: -1;
 }
 
 .projects {

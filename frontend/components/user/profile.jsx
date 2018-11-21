@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
+import Feed from './feed';
 
 class UserProfile extends React.Component {
   constructor(props) {
@@ -21,14 +22,17 @@ class UserProfile extends React.Component {
       description = this.props.user.description;
     }
     return (
-      <div className="profile_content">
-        <div className="avatar-large"/>
-        <ul>
-          <li>{username}</li>
-          <li>{email}</li>
-          <li>{description}</li>
-        </ul>
-      </div>
+      <>
+        <div className="profile_content">
+          <div className="avatar-large"/>
+          <ul>
+            <li>{username}</li>
+            <li>{email}</li>
+            <li>{description}</li>
+          </ul>
+        </div>
+        <Feed/>
+      </>
     );
   }
 }

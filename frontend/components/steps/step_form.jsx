@@ -1,20 +1,15 @@
 import React from 'react';
 import { Link, Redirect } from 'react-router-dom';
 
-class SessionForm extends React.Component {
+class StepForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {username: '', email: '', password: ''};
+    this.state = {title: '', category: '', description: '', steps_attributes: []};
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentWillUnmount() {
     this.props.removeErrors();
-    $('#login-wrapper').parallax({imageSrc: ``});
-  }
-
-  componentDidMount() {
-    $('#login-wrapper').parallax({imageSrc: `${window.glassblowing}`});
   }
 
   update(field) {
@@ -63,30 +58,28 @@ class SessionForm extends React.Component {
           {this.renderErrors()}
           <br/>
           <br/>
-          <div className="form-input">
-              <input
-                className="input-large"
-                placeholder="Username"
-                type="text"
-                value={this.state.username}
-                onChange={this.update('username')}
-                />
-            <br/>
-              {this.props.formType === 'Sign Me Up !' ? email : ''}
-              <input
-                className="input-large"
-                placeholder="Password"
-                type="password"
-                value={this.state.password}
-                onChange={this.update('password')}
-                />
-            <br/>
-            <input className="authButton" type="submit" value={this.props.formType}/>
-          </div>
+            <input
+              className="input-large"
+              placeholder="Username"
+              type="text"
+              value={this.state.username}
+              onChange={this.update('username')}
+              />
+          <br/>
+            {this.props.formType === 'Sign Me Up !' ? email : ''}
+            <input
+              className="input-large"
+              placeholder="Password"
+              type="password"
+              value={this.state.password}
+              onChange={this.update('password')}
+              />
+          <br/>
+          <input className="authButton" type="submit" value={this.props.formType}/>
         </form>
       </div>
     );
   }
 }
 
-export default SessionForm;
+export default StepFrom;

@@ -6,6 +6,7 @@ export const fetchProjects = () => {
 };
 
 export const fetchProject = id => {
+  debugger
   return $.ajax({
     method: 'GET',
     url: `/api/projects/${id}`

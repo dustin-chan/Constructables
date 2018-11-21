@@ -18,14 +18,15 @@ const receiveProjects = projects => {
 };
 
 export const requestProject = (id) => dispatch => {
-  return ProjectAPIUtil.fetchProject().then(project => dispatch(receiveProject(project)));
+  debugger
+  return ProjectAPIUtil.fetchProject(id).then(project => dispatch(receiveProject(project)));
 };
 
-const receiveProject = ({project, steps}) => {
+const receiveProject = (project) => {
+  debugger
   return {
     type: RECEIVE_PROJECT,
-    project,
-    steps
+    project
   };
 };
 
@@ -56,6 +57,7 @@ export const updateProject = project => {
 const removeProject = id => {
   return {
     type: REMOVE_PROJECT,
+    projectId: id
   };
 };
 
