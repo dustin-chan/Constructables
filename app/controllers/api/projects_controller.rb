@@ -1,7 +1,13 @@
 class Api::ProjectsController < ApplicationController
   def create
+
     @project = Project.new(project_params)
     @project.user_id = current_user.id
+    if @project.featured == 'false'
+      @project.featured = :false
+    else
+      @project.featured = :true
+    end
     if @project.save
       render "api/projects/show"
     else
@@ -17,7 +23,7 @@ class Api::ProjectsController < ApplicationController
     @project = Project.includes(:steps).includes(:user).find(params[:id])
   end
 
-  def edit
+  def update
     @project = Project.find(params[:id])
     if @project.update_attributes(project_params)
       render "api/projects/show"

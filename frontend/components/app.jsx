@@ -7,8 +7,7 @@ import HeaderAuthContainer from './header/auth_container';
 import UserProfileContainer from './user/profile_container';
 import FeaturedProjectsContainer from './projects/featured_projects_container';
 import ProjectShowContainer from './projects/project_show_container';
-import ProjectFormEditContainer from './project_form/edit_project_form_container';
-import ProjectForm from './project_form/project_form';
+import CreateProjectFormContainer from './project_form/create_project_form_container';
 import Home from './home/home';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 
@@ -23,28 +22,18 @@ const App = ({store}) => {
           <HeaderAuthContainer store={store}/>
         </div>
         <div className="bottom-bar">
-          <Link to="/">
-            <h3>Classes</h3>
-          </Link>
-          <Link to="/">
-            <h3>Contests</h3>
-          </Link>
-          <Link to="/">
-            <h3>Community</h3>
-          </Link>
-          <Link to="/">
-            <h3>Education</h3>
+          <Link to="/project/create">
+            <h3>Create Constructable</h3>
           </Link>
         </div>
       </header>
 
       <Route exact path="/" component={Home} />
       <Route exact path="/featured/" component={FeaturedProjectsContainer} />
-      <Route exact path="/form" component={ProjectForm} />
       <Route exact path="/projects/:projectId" component={ProjectShowContainer} />
-      <Route exact path="/projects/:projectId/edit" component={ProjectFormEditContainer} />
       <AuthRoute exact path="/login" component={LogInFormContainer} />
       <AuthRoute exact path="/signup" component={SignUpFormContainer} />
+      <ProtectedRoute exact path="/project/create" component={CreateProjectFormContainer} />
       <ProtectedRoute exact path="/users/:userId" component={UserProfileContainer} />
 
       <footer id="gbl-footer"></footer>
@@ -52,4 +41,5 @@ const App = ({store}) => {
   );
 };
 
+// <Route exact path="/projects/:projectId/edit" component={ProjectFormEditContainer} />
 export default App;

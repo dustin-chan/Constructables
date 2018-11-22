@@ -6,23 +6,32 @@ class ProjectShow extends React.Component {
   }
 
   componentDidMount() {
-    debugger
+
     this.props.requestProject(this.props.match.params.projectId);
   }
 
   render() {
-    debugger
-    const { project } = this.props;
-    const { title, description, user_id: userId, authorUsername, steps } = project;
 
+    if (!this.props.project) {
+      return <div/>;
+    }
+
+    const { project, steps } = this.props;
+    const { title, description, user_id: userId, authorUsername } = project;
+    let stepsJsx;
+    if (steps) {
+      const vals = Object.values(steps);
+      stepsJsx = vals.map(val => <li dangerouslySetInnerHTML={{__html: val.htmlSafe}}/>);
+    } else {
+      stepsJsx = '';
+    }
     return (
-      <div>
+      <div className="project-show">
         <ul>
           <li>{title}</li>
           <li>{description}</li>
-          <li>{userId}</li>
           <li>{authorUsername}</li>
-          <li>{steps}</li>
+          {stepsJsx}
         </ul>
       </div>
     );

@@ -18,15 +18,16 @@ const receiveProjects = projects => {
 };
 
 export const requestProject = (id) => dispatch => {
-  debugger
-  return ProjectAPIUtil.fetchProject(id).then(project => dispatch(receiveProject(project)));
+
+  return ProjectAPIUtil.fetchProject(id).then(payload => dispatch(receiveProject(payload)));
 };
 
-const receiveProject = (project) => {
-  debugger
+const receiveProject = ({ project, steps }) => {
+
   return {
     type: RECEIVE_PROJECT,
-    project
+    project,
+    steps
   };
 };
 
@@ -37,20 +38,20 @@ const receiveErrors = errors => {
   };
 };
 
-const removeErrors = () => {
+export const removeErrors = () => {
   return {
     type: REMOVE_ERRORS,
     errors: {}
   };
 };
 
-export const createProject = project => {
-  return ProjectAPIUtil.createProject().then(project => dispatch(receiveProject(project)),
+export const createProject = project => dispatch => {
+  return ProjectAPIUtil.createProject(project).then(project => dispatch(receiveProject(project)),
     err => dispatch(receiveErrors(err.responseJSON)));
 };
 
-export const updateProject = project => {
-  return ProjectAPIUtil.updateProject().then(project => dispatch(receiveProject(project)),
+export const updateProject = project => dispatch => {
+  return ProjectAPIUtil.updateProject(project).then(project => dispatch(receiveProject(project)),
     err => dispatch(receiveErrors(err.responseJSON)));
 };
 

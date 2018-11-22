@@ -4,9 +4,10 @@ import { requestProject } from '../../actions/project_actions';
 import ProjectShow from './project_show';
 
 const msp = (state, ownProps) => {
-  debugger
+
   return {
-    project: state.entities.projects[ownProps.match.params.userId]
+    project: state.entities.projects[ownProps.match.params.projectId],
+    steps: state.entities.steps
   };
 };
 

@@ -21,7 +21,7 @@ body {
 
 
 .avatar-large {
-  background-image: image-url('user/user.SQUARE2.png');
+  background-image: image-url('user/avatar');
   height: 116px;
   width: 116px;
   border-radius: 58px;
@@ -54,7 +54,7 @@ body {
 }
 
 .avatar {
-  background-image: image-url('user/user.TINY.png');
+  background-image: image-url('user/avatar');
   background-size: cover;
   border-radius: 17px;
   width: 34px;

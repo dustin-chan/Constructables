@@ -13,18 +13,23 @@ class UserProfile extends React.Component {
   }
 
   render() {
+    debugger
     let username;
     let email;
     let description;
+    let photoUrl;
     if (this.props.user) {
       username = this.props.user.username;
       email = this.props.user.email;
       description = this.props.user.description;
+      photoUrl = this.props.user.photoUrl;
     }
+
     return (
       <>
         <div className="profile_content">
           <div className="avatar-large"/>
+          <img src={photoUrl}/>
           <ul>
             <li>{username}</li>
             <li>{email}</li>
