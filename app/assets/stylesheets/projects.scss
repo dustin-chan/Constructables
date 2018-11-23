@@ -21,9 +21,11 @@
 }
 
 .featured_project_item > .project_details {
+  font-weight: bold;
+  color: black;
   display: flex;
   flex-direction: column;
-  padding: 20px 5px 13px 0px;
+  padding: 20px 5px 17px 0px;
   margin-top: 280px;
   background: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
   width: 100%;
@@ -54,6 +56,9 @@
 }
 
 .parallax-show {
+  box-shadow: inset 0px 10px 10px rgba(0, 0, 0, .25);
+  border-bottom: 1px solid #e4e4e4;
+  border-top: 1px solid #e4e4e4;
   min-height: 650px;
   max-height: 700px;
   min-width: 1030px;
@@ -62,10 +67,58 @@
   z-index: -1;
 }
 
+.step-parallax-show {
+  box-shadow: inset 5px 5px 5px rgba(0, 0, 0, .25);
+  min-height: 650px;
+  max-height: 700px;
+  align-self: center;
+  width: 80%;
+  background: transparent;
+  z-index: -1;
+}
+
+.project-show-ul {
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.project-show-div {
+  display: flex;
+  flex-direction: column;
+}
+
+.project-quill {
+  width: 80%;
+  align-self: center;
+  text-align: left;
+}
+
+.step-quill {
+  width: 80%;
+  align-self: center;
+  margin-left: 10%;
+  text-align: left;
+}
+
+.ql-video {
+  width: 100%;
+  min-height: 500px;
+}
+
 .parallax-index-show {
   height: 80%;
   width: 100%;
   background: transparent;
+}
+
+strong {
+  font-weight: bold !important;
+}
+
+.project-title {
+  font-size: 32px;
+  font-weight: bold;
 }
 
 .project_image {

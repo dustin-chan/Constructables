@@ -10,12 +10,17 @@ class ProjectShow extends React.Component {
   }
 
   componentDidUpdate() {
-    const parallaxDiv = $(`.project-photo-${this.props.project.id}`);
-    parallaxDiv.parallax({imageSrc: `${this.props.project.photoUrl}`, speed: .5});
+    const projectParallaxDiv = $(`.project-photo-${this.props.project.id}`);
+    projectParallaxDiv.parallax({imageSrc: `${this.props.project.photoUrl}`, speed: .3});
+
+    Object.values(this.props.steps).map(step => {
+      const stepParallaxDiv = $(`.project-photo-${step.id}`);
+      stepParallaxDiv.parallax({imageSrc: `${step.photoUrl}`, speed: .75});
+    })
   }
 
   render() {
-    // 
+    //
     if (!this.props.project) {
       return <div/>;
     }
@@ -24,19 +29,22 @@ class ProjectShow extends React.Component {
     const { title, description, user_id: userId, authorUsername, photoUrl } = project;
     let stepsJsx;
     if (steps) {
-      const vals = Object.values(steps);
-      stepsJsx = vals.map((val, idx) => <li key={idx} dangerouslySetInnerHTML={{__html: val}}/>);
+      stepsJsx = Object.values(steps).map((step, idx) => (
+        <div className="project-show-div">
+        <div key={`step-div-${idx}`} className={`step-parallax-show project-photo-${step.id}`} />
+          <li key={`step-li-${idx}`} className="step-quill" dangerouslySetInnerHTML={{__html: step.body}}/>
+        </div>
+      ));
     } else {
       stepsJsx = '';
     }
     return (
       <div className="project-show">
-        <ul>
-        <div className={`parallax-show project-photo-${project.id}`} />
-        <li>{title}</li>
-        <li dangerouslySetInnerHTML={{__html: description}}></li>
-        <li>{authorUsername}</li>
-        {stepsJsx}
+        <ul className="project-show-ul">
+          <div className={`parallax-show project-photo-${project.id}`} />
+          <li className="project-title">{title}</li>
+          <li className="project-quill" dangerouslySetInnerHTML={{__html: description}}></li>
+          {stepsJsx}
         </ul>
       </div>
     );

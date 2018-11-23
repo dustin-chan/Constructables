@@ -24,8 +24,7 @@ class FeaturedProjectItem extends React.Component {
         <Link className="project_image" to={`/projects/${this.id}`}><div className={`index-image project-index-photo-${this.id}`}/></Link>
         <div className="project_details">
           <Link className="project_detail" to={`/projects/${this.id}`}>{project.title}</Link>
-          <Link className="project_detail" to={`/users/${project.user_id}`}>{project.authorUsername}</Link>
-          <Link className="project_detail" to={`/users/${project.user_id}`}>{project.category}</Link>
+          <Link className="project_detail" to={`/users/${project.user_id}`}>by {project.authorUsername}</Link>
         </div>
       </li>
     );
