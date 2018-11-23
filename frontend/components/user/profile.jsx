@@ -13,7 +13,7 @@ class UserProfile extends React.Component {
   }
 
   render() {
-    
+
     let username;
     let email;
     let description;
@@ -29,10 +29,9 @@ class UserProfile extends React.Component {
       <>
         <div className="profile_content">
           <div className="avatar-large"/>
-          <img src={photoUrl}/>
           <ul>
-            <li>{username}</li>
-            <li>{email}</li>
+            <li className="username">{username}</li>
+            <li className="email">{email}</li>
             <li>{description}</li>
           </ul>
         </div>

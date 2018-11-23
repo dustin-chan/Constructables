@@ -3,12 +3,30 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .profile_content {
+  font-weight: bold;
+  font-size: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
   height: 222px;
   background-color: white;
   border-bottom: 1px solid #ddd;
+}
+
+.profile_content li {
+  padding: 15px 0 0 15px;
+}
+
+.username {
+  font-weight: bold;
+  font-size: 24px;
+  color: grey;
+}
+
+.email {
+  font-weight: bold;
+  font-size: 16px;
+  color: darkgrey;
 }
 
 .profile_feed {

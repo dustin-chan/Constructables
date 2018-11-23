@@ -16,8 +16,9 @@ const App = ({store}) => {
     <div>
       <header id="gbl-header">
         <div className="top-bar">
-          <Link to="/">
-            <h1>constructables</h1>
+          <Link to="/" className="header-link">
+            <div/>
+            <h1 className="header-title">Constructables</h1>
           </Link>
           <HeaderAuthContainer store={store}/>
         </div>

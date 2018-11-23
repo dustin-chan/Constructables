@@ -11,8 +11,10 @@ end
 json.steps do
   @project.steps.each do |step|
     json.set! step.id do
+      json.id step.id
       json.body step.body
       json.photoUrl url_for(step.photo)
+      json.projectId step.project_id
     end
   end
 

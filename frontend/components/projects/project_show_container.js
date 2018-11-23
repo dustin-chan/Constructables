@@ -4,10 +4,15 @@ import { requestProject } from '../../actions/project_actions';
 import ProjectShow from './project_show';
 
 const msp = (state, ownProps) => {
-
+  const projectId = ownProps.match.params.projectId;
+  const steps = Object.values(state.entities.steps).map(step => {
+    if (step.projectId === parseInt(projectId)) {
+      return step;
+    }
+  });
   return {
-    project: state.entities.projects[ownProps.match.params.projectId],
-    steps: state.entities.steps
+    project: state.entities.projects[projectId],
+    steps
   };
 };
 

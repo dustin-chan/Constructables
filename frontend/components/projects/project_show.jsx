@@ -9,14 +9,18 @@ class ProjectShow extends React.Component {
     this.props.requestProject(this.props.match.params.projectId);
   }
 
-  componentDidUpdate() {
+  componentDidUpdate(oldProps) {
     const projectParallaxDiv = $(`.project-photo-${this.props.project.id}`);
     projectParallaxDiv.parallax({imageSrc: `${this.props.project.photoUrl}`, speed: .3});
 
-    Object.values(this.props.steps).map(step => {
-      const stepParallaxDiv = $(`.project-photo-${step.id}`);
-      stepParallaxDiv.parallax({imageSrc: `${step.photoUrl}`, speed: .75});
-    })
+    if (this.props.steps[0]) {  
+      this.props.steps.map(step => {
+        const stepParallaxDiv = $(`.project-photo-${step.id}`);
+        stepParallaxDiv.parallax({imageSrc: `${step.photoUrl}`, speed: .75});
+      });
+    }
+
+    window.scrollTo(0, 0);
   }
 
   render() {
@@ -28,8 +32,9 @@ class ProjectShow extends React.Component {
     const { project, steps } = this.props;
     const { title, description, user_id: userId, authorUsername, photoUrl } = project;
     let stepsJsx;
-    if (steps) {
-      stepsJsx = Object.values(steps).map((step, idx) => (
+    if (steps[0]) {
+      debugger
+      stepsJsx = steps.map((step, idx) => (
         <div className="project-show-div">
         <div key={`step-div-${idx}`} className={`step-parallax-show project-photo-${step.id}`} />
           <li key={`step-li-${idx}`} className="step-quill" dangerouslySetInnerHTML={{__html: step.body}}/>

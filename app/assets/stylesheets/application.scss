@@ -34,8 +34,10 @@ body {
   cursor: pointer;
   color: #333;
   font-weight: bold;
-  font-size: 20px;
+  font-size: 25px;
   vertical-align: middle;
+  position: absolute;
+  padding: 25px 0 25px 60px;
 }
 
 #gbl-header {
@@ -51,6 +53,23 @@ body {
   height: 78px;
   background-color: #eee;
   border-bottom: 1px solid #ddd;
+  display: flex;
+  flex-direction: column;
+}
+
+.header-link {
+  display: flex;
+
+}
+
+.header-link div {
+  background-image: image_url('robot.png');
+  height: 42px;
+  width: 42px;
+  background-size: cover;
+  position: absolute;
+  padding: 10px;
+  margin: 5px;
 }
 
 .avatar {
@@ -61,12 +80,12 @@ body {
   height: 34px;
   position: absolute;
   right: 80px;
+  margin-top: 20px;
 }
 
 #gbl-footer, #gbl-header {
   min-width: initial;
 }
-
 
 #gbl-footer {
   color: #999;
