@@ -11,7 +11,7 @@ class FeaturedProjectItem extends React.Component {
 
     const parallaxDiv = $(`.project-index-photo-${this.id}`);
     parallaxDiv.parallax({imageSrc: `${this.props.project.photoUrl}`, speed: Math.random()});
-    debugger
+
   }
 
   componentDidUpdate() {

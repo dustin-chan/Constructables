@@ -13,7 +13,7 @@ class UserProfile extends React.Component {
   }
 
   render() {
-    debugger
+    
     let username;
     let email;
     let description;

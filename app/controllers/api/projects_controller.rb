@@ -1,8 +1,8 @@
 class Api::ProjectsController < ApplicationController
   def create
-    debugger
+    
     @project = Project.new(project_params)
-    debugger
+    
     @project.user_id = current_user.id
     if @project.featured == 'false'
       @project.featured = :false

@@ -63,7 +63,7 @@ class ProjectForm extends React.Component {
         formData.append('project[steps_attributes][][photo]', step.photoFile);
       }
     });
-    debugger
+    
     if (this.state.photoFile) {
       formData.append('project[photo]', this.state.photoFile);
     }
