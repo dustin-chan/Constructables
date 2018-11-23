@@ -10,7 +10,6 @@ class SessionForm extends React.Component {
 
   componentWillUnmount() {
     this.props.removeErrors();
-    $('#login-wrapper').parallax({imageSrc: ``});
   }
 
   componentDidMount() {

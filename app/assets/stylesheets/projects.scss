@@ -6,7 +6,7 @@
   display: flex;
   flex-wrap: wrap;
   padding: 50px;
-  background-color: white;
+  background-color: transparent;
 }
 
 .featured_project_item {
@@ -16,21 +16,17 @@
   flex-direction: column;
   width: 323px;
   height: 349px;
-  background-color: lightgrey;
   margin: 10px;
-  border-radius: 7px;
-  box-shadow: inset 1px 1px 1px rgba(0, 0, 0, .25);
+  box-shadow: inset 2px 2px 2px rgba(0, 0, 0, .25);
 }
 
 .featured_project_item > .project_details {
   display: flex;
   flex-direction: column;
-  padding-top: 20px;
+  padding: 20px 5px 13px 0px;
   margin-top: 280px;
-  background: linear-gradient(rgba(245, 245, 245, 0), rgba(245, 245, 245, 1));
+  background: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
   width: 100%;
-  padding-bottom: 13px;
-  border-radius: 0 0 7px 7px;
 }
 
 .featured_project_item .project_detail {
@@ -43,16 +39,51 @@
 }
 
 .project-show {
-  height: 600px;
+  min-height: 700px;
   display: flex;
   text-align: center;
 }
 
 .project-show ul {
-  background-color: white;
+  background-color: transparent;
   width: 100%;
 }
 
 .project-show ul li {
   margin: 50px;
+}
+
+.parallax-show {
+  min-height: 650px;
+  max-height: 700px;
+  min-width: 1030px;
+  width: 100%;
+  background: transparent;
+  z-index: -1;
+}
+
+.parallax-index-show {
+  height: 80%;
+  width: 100%;
+  background: transparent;
+}
+
+.project_image {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  background-color: transparent;
+  position: absolute;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.index-image {
+  height: 100%;
+  width: 100%;
+  background-size: cover;
+  z-index: -2;
+}
+
+.index-image.parallax-mirror {
 }

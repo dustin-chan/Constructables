@@ -1,7 +1,8 @@
 class Api::ProjectsController < ApplicationController
   def create
-
+    debugger
     @project = Project.new(project_params)
+    debugger
     @project.user_id = current_user.id
     if @project.featured == 'false'
       @project.featured = :false
@@ -41,6 +42,7 @@ class Api::ProjectsController < ApplicationController
 
   def project_params
       params.require(:project).permit(:title, :featured, :category, :description,
-        :steps_attributes => [:body])
+        :photo, steps_attributes: [:body, :photo] )
   end
 end
+ # => [:body]

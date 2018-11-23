@@ -13,12 +13,14 @@ export const fetchProject = id => {
   });
 };
 
-export const createProject = project => {
-
+export const createProject = formData => {
+  debugger
   return $.ajax({
     method: 'POST',
     url: `/api/projects`,
-    data: {project}
+    data: formData,
+    contentType: false,
+    processData: false
   });
 };
 

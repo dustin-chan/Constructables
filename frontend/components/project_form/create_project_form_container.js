@@ -6,7 +6,7 @@ import ProjectForm from './project_form';
 
 const msp = ({ errors }) => {
   return {
-    project: {title: '', photoUrl: '', photoFile: null, featured: 'false', category: 'craft', description: '', steps_attributes: []},
+    project: {title: '', photoUrl: '', photoFile: null, featured: 'false', category: 'craft', description: '', stepsAttributes: []},
     errors: errors,
   };
 };

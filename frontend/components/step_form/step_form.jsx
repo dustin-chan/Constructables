@@ -22,11 +22,15 @@ class StepForm extends React.Component {
   }
 
   render() {
-    const { idx, step, stepUpdate, removeStep, quillModules, quillFormats } = this.props;
+    const { idx, step, stepUpdate, stepFileUpdate, removeStep, quillModules, quillFormats } = this.props;
     console.log(step.body)
 
     return (
       <div className="quill-form-step">Step {idx + 1}
+        <div className="step-image">
+          <img src={step.photoUrl} />
+          <input type="file" onChange={stepFileUpdate(idx)}/>
+        </div>
         <ReactQuill
           className="quill"
           modules={quillModules}

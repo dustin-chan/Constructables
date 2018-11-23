@@ -2,6 +2,10 @@ import React from 'react';
 import FeaturedProjectItem from './featured_project_item';
 
 class FeaturedProjects extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
   componentDidMount() {
     this.props.requestProjects();
   }

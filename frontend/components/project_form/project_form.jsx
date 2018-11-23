@@ -12,12 +12,13 @@ class ProjectForm extends React.Component {
     this.fileUpdate = this.fileUpdate.bind(this);
     this.addStep = this.addStep.bind(this);
     this.stepUpdate = this.stepUpdate.bind(this);
+    this.stepFileUpdate = this.stepFileUpdate.bind(this);
     this.removeStep = this.removeStep.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   defaultStep() {
-    return {body: ''};
+    return {photoUrl: '', photoFile: null, body: ''};
   }
 
   componentWillUnmount() {
@@ -41,7 +42,6 @@ class ProjectForm extends React.Component {
     const file = e.currentTarget.files[0];
     reader.onloadend = () =>
       this.setState({ photoUrl: reader.result, photoFile: file});
-
     if (file) {
       reader.readAsDataURL(file);
     } else {
@@ -50,39 +50,64 @@ class ProjectForm extends React.Component {
   }
 
   handleSubmit(e) {
+    // formData.append('project[steps_attributes][]', step.photoFile)
     e.preventDefault();
     const formData = new FormData();
     formData.append('project[title]', this.state.title);
+    formData.append('project[featured]', this.state.featured);
+    formData.append('project[category]', this.state.category);
+    formData.append('project[description]', this.state.description);
+    this.state.stepsAttributes.map(step => {
+      formData.append('project[steps_attributes][][body]', step.body);
+      if (step.photoFile) {
+        formData.append('project[steps_attributes][][photo]', step.photoFile);
+      }
+    });
+    debugger
     if (this.state.photoFile) {
-      formData.append('project[title]', this.state.photoFile);
+      formData.append('project[photo]', this.state.photoFile);
     }
-    // $.ajax({    }) ???
-    const project = Object.assign({}, this.state);
 
-    this.props.processForm(project).then(res => this.props.history.push(`/projects/${res.project.id}`));
+    this.props.processForm(formData).then(res => this.props.history.push(`/projects/${res.project.id}`));
   }
 
   addStep() {
-    this.setState({steps_attributes: this.state.steps_attributes.concat([this.defaultStep()])});
-    // HOW TO CAUSE RE-RENDER?
+    this.setState({stepsAttributes: this.state.stepsAttributes.concat([this.defaultStep()])});
   }
 
   stepUpdate(idx) {
     return (value, delta, source, editor) => {
-      const step = this.state.steps_attributes[idx];
+      const step = this.state.stepsAttributes[idx];
       step.body = value;
-      console.log(this.state)
-      this.setState({steps_attributes: this.state.steps_attributes}, () => {
-        console.log(this.state)
-      });
+      this.setState({stepsAttributes: this.state.stepsAttributes});
     };
   };
 
+  stepFileUpdate(idx) {
+    return (e) => {
+      const step = this.state.stepsAttributes[idx];
+      const reader = new FileReader();
+      const file = e.currentTarget.files[0];
+      reader.onloadend = () => {
+        step.photoUrl = reader.result;
+        step.photoFile = file;
+        this.setState({stepsAttributes: this.state.stepsAttributes})
+      };
+      if (file) {
+        reader.readAsDataURL(file);
+      } else {
+        step.photoUrl = "";
+        step.photoFile = file;
+        this.setState({stepsAttributes: this.state.stepsAttributes});
+      }
+    }
+  }
+
   removeStep(idx) {
-    const steps = this.state.steps_attributes;
+    const steps = this.state.stepsAttributes;
     const newStepsAttributes = steps.slice(0, idx)
       .concat(steps.slice(idx + 1, steps.length));
-    this.setState({steps_attributes: newStepsAttributes});
+    this.setState({stepsAttributes: newStepsAttributes});
   }
 
   renderErrors() {
@@ -130,13 +155,14 @@ class ProjectForm extends React.Component {
       "video"
     ];
 
-    const steps = this.state.steps_attributes.map((step, idx) => {
+    const steps = this.state.stepsAttributes.map((step, idx) => {
       return (
         <StepForm
           key={idx}
           idx={idx}
           step={step}
           stepUpdate={this.stepUpdate}
+          stepFileUpdate={this.stepFileUpdate}
           removeStep={this.removeStep}
           quillModules={quillModules}
           quillFormats={quillFormats}
@@ -148,20 +174,20 @@ class ProjectForm extends React.Component {
       <div className="form-container">
         <form className="project-form" onSubmit={this.handleSubmit}>
           <br/>
-          <div className="project-image">
-            <img src={this.state.photoUrl} />
-            <input type="file" onChange={this.fileUpdate}/>
-          </div>
+            <label>{this.state.title}
+              <input
+                className="input-large"
+                placeholder="Title"
+                type="text"
+                value={this.state.title}
+                onChange={this.update('title')}
+                />
+            </label>
           <br/>
-          <label>{this.state.title}
-            <input
-              className="input-large"
-              placeholder="Title"
-              type="text"
-              value={this.state.title}
-              onChange={this.update('title')}
-              />
-          </label>
+            <div className="project-image">
+              <img src={this.state.photoUrl} />
+              <input type="file" onChange={this.fileUpdate}/>
+            </div>
           <br/>
           <br/>
           <div className="quill-form-intro">Introduction

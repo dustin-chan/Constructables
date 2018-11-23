@@ -23,7 +23,6 @@ export const requestProject = (id) => dispatch => {
 };
 
 const receiveProject = ({ project, steps }) => {
-
   return {
     type: RECEIVE_PROJECT,
     project,

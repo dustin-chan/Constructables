@@ -6,32 +6,37 @@ class ProjectShow extends React.Component {
   }
 
   componentDidMount() {
-
     this.props.requestProject(this.props.match.params.projectId);
   }
 
-  render() {
+  componentDidUpdate() {
+    const parallaxDiv = $(`.project-photo-${this.props.project.id}`);
+    parallaxDiv.parallax({imageSrc: `${this.props.project.photoUrl}`, speed: .5});
+  }
 
+  render() {
+    // debugger
     if (!this.props.project) {
       return <div/>;
     }
 
     const { project, steps } = this.props;
-    const { title, description, user_id: userId, authorUsername } = project;
+    const { title, description, user_id: userId, authorUsername, photoUrl } = project;
     let stepsJsx;
     if (steps) {
       const vals = Object.values(steps);
-      stepsJsx = vals.map(val => <li dangerouslySetInnerHTML={{__html: val.htmlSafe}}/>);
+      stepsJsx = vals.map((val, idx) => <li key={idx} dangerouslySetInnerHTML={{__html: val}}/>);
     } else {
       stepsJsx = '';
     }
     return (
       <div className="project-show">
         <ul>
-          <li>{title}</li>
-          <li>{description}</li>
-          <li>{authorUsername}</li>
-          {stepsJsx}
+        <div className={`parallax-show project-photo-${project.id}`} />
+        <li>{title}</li>
+        <li dangerouslySetInnerHTML={{__html: description}}></li>
+        <li>{authorUsername}</li>
+        {stepsJsx}
         </ul>
       </div>
     );
