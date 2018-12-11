@@ -8,6 +8,7 @@ const msp = ({ errors }) => {
   return {
     project: {title: '', photoUrl: '', photoFile: null, featured: 'false', category: 'craft', description: '', stepsAttributes: []},
     errors: errors,
+    formType: 'create'
   };
 };
 

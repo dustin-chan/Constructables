@@ -10,6 +10,10 @@ class FeaturedProjects extends React.Component {
     this.props.requestProjects();
   }
 
+  componentDidUpdate() {
+    window.scrollTo(0, 0);
+  }
+
   render() {
 
     const projects = this.props.projects.map(project => {

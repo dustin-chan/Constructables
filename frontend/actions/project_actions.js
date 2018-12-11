@@ -49,8 +49,9 @@ export const createProject = project => dispatch => {
     err => dispatch(receiveErrors(err.responseJSON)));
 };
 
-export const updateProject = project => dispatch => {
-  return ProjectAPIUtil.updateProject(project).then(project => dispatch(receiveProject(project)),
+export const updateProject = data => dispatch => {
+  debugger
+  return ProjectAPIUtil.updateProject(data).then(project => dispatch(receiveProject(project)),
     err => dispatch(receiveErrors(err.responseJSON)));
 };
 
@@ -61,6 +62,6 @@ const removeProject = id => {
   };
 };
 
-export const deleteProject = id => {
+export const deleteProject = id => dispatch => {
   return ProjectAPIUtil.deleteProject(id).then(() => dispatch(removeProject(id)));
 };

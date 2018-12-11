@@ -12,12 +12,10 @@
 .featured_project_item {
   position: relative;
   color: rgb(22, 22, 29);
-  display: flex;
-  flex-direction: column;
   width: 323px;
   height: 349px;
   margin: 10px;
-  box-shadow: inset 2px 2px 2px rgba(0, 0, 0, .25);
+  border-radius: 10px;
 }
 
 .featured_project_item > .project_details {
@@ -42,7 +40,6 @@
 
 .project-show {
   min-height: 700px;
-  display: flex;
   text-align: center;
 }
 
@@ -129,18 +126,46 @@ strong {
   width: 100%;
   height: 100%;
   display: flex;
+  background-size: cover;
   background-color: transparent;
   position: absolute;
   justify-content: center;
   overflow: hidden;
+  border-radius: 10px;
+  box-shadow: inset 2px 2px 2px rgba(0, 0, 0, .25);
 }
 
 .index-image {
   height: 100%;
-  width: 100%;
   background-size: cover;
   z-index: -2;
 }
 
-.index-image.parallax-mirror {
+.project-edit-link {
+  align-self: center;
+  width: 30%;
+  background-color: yellow;
+  color: white;
+  font-weight: bold;
+  background-color: orange;
+  padding: 15px;
+  border-radius: 15px;
+  margin-bottom: 50px;
+}
+
+.protected-project-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+.project-delete-link {
+  width: 30%;
+  padding: 15px;
+  color: white;
+  font-weight: bold;
+  background-color: red;
+  border-radius: 15px;
+  margin-bottom: 50px;
 }

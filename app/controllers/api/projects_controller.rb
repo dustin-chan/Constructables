@@ -1,8 +1,8 @@
 class Api::ProjectsController < ApplicationController
   def create
-    
+
     @project = Project.new(project_params)
-    
+
     @project.user_id = current_user.id
     if @project.featured == 'false'
       @project.featured = :false
@@ -21,10 +21,11 @@ class Api::ProjectsController < ApplicationController
   end
 
   def show
-    @project = Project.includes(:steps).includes(:user).find(params[:id])
+    @project = Project.includes(:steps, :user).find(params[:id])
   end
 
   def update
+    debugger
     @project = Project.find(params[:id])
     if @project.update_attributes(project_params)
       render "api/projects/show"

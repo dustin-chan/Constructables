@@ -14,7 +14,7 @@ export const fetchProject = id => {
 };
 
 export const createProject = formData => {
-  
+
   return $.ajax({
     method: 'POST',
     url: `/api/projects`,
@@ -24,11 +24,14 @@ export const createProject = formData => {
   });
 };
 
-export const updateProject = project => {
+export const updateProject = (data) => {
+  debugger
   return $.ajax({
     method: 'PATCH',
-    url: `/api/projects/${project.id}/edit`,
-    data: {project}
+    url: `/api/projects/${data.id}`,
+    data: data.formData,
+    contentType: false,
+    processData: false
   });
 };
 

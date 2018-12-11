@@ -23,7 +23,6 @@ class StepForm extends React.Component {
 
   render() {
     const { idx, step, stepUpdate, stepFileUpdate, removeStep, quillModules, quillFormats } = this.props;
-    console.log(step.body)
 
     return (
       <div className="quill-form-step">Step {idx + 1}

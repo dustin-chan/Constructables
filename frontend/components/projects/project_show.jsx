@@ -1,8 +1,12 @@
 import React from 'react';
+import { Redirect, Link } from 'react-router-dom';
+
 
 class ProjectShow extends React.Component {
   constructor(props) {
     super(props);
+
+    this.deleteProject = this.props.deleteProject.bind(this);
   }
 
   componentDidMount() {
@@ -13,13 +17,6 @@ class ProjectShow extends React.Component {
     const projectParallaxDiv = $(`.project-photo-${this.props.project.id}`);
     projectParallaxDiv.parallax({imageSrc: `${this.props.project.photoUrl}`, speed: .3});
 
-    if (this.props.steps[0]) {  
-      this.props.steps.map(step => {
-        const stepParallaxDiv = $(`.project-photo-${step.id}`);
-        stepParallaxDiv.parallax({imageSrc: `${step.photoUrl}`, speed: .75});
-      });
-    }
-
     window.scrollTo(0, 0);
   }
 
@@ -29,14 +26,17 @@ class ProjectShow extends React.Component {
       return <div/>;
     }
 
+    let protectedButtons;
+    debugger
+    // if ( ) SET CONDITIONAL FOR CURRENT USER
+
     const { project, steps } = this.props;
     const { title, description, user_id: userId, authorUsername, photoUrl } = project;
     let stepsJsx;
     if (steps[0]) {
-      debugger
       stepsJsx = steps.map((step, idx) => (
         <div className="project-show-div">
-        <div key={`step-div-${idx}`} className={`step-parallax-show project-photo-${step.id}`} />
+          <img key={`step-div-${idx}`} src ={`${step.photoUrl}`} className={`step-parallax-show project-photo-${step.id}`} />
           <li key={`step-li-${idx}`} className="step-quill" dangerouslySetInnerHTML={{__html: step.body}}/>
         </div>
       ));
@@ -51,6 +51,15 @@ class ProjectShow extends React.Component {
           <li className="project-quill" dangerouslySetInnerHTML={{__html: description}}></li>
           {stepsJsx}
         </ul>
+
+        <div className="protected-project-buttons">
+          <div className="project-edit-link">
+            <Link to={`/projects/${project.id}/edit`}>
+              Edit Project
+            </Link>
+          </div>
+          <button className='project-delete-link' onClick={() => this.deleteProject(this.props.project.id).then(this.props.history.push('/'))}>Delete Project</button>
+        </div>
       </div>
     );
   }

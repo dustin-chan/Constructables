@@ -7,6 +7,7 @@ import StepForm from '../step_form/step_form';
 class ProjectForm extends React.Component {
   constructor(props) {
     super(props);
+    // debugger
     this.state = this.props.project;
     this.quillUpdate = this.quillUpdate.bind(this);
     this.fileUpdate = this.fileUpdate.bind(this);
@@ -19,6 +20,26 @@ class ProjectForm extends React.Component {
 
   defaultStep() {
     return {photoUrl: '', photoFile: null, body: ''};
+  }
+
+  componentDidMount() {
+    if ( this.props.formType === 'edit' ) {
+      // debugger
+      this.props.requestProject(this.props.match.params.projectId);
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    if ( prevProps.project != this.props.project ) {
+      this.setState({
+        title: this.props.project.title,
+        photoUrl: this.props.project.photoUrl,
+        featured: this.props.project.featured,
+        category: this.props.project.category,
+        description: this.props.project.description,
+        stepsAttributes: this.props.project.stepsAttributes
+      });
+    }
   }
 
   componentWillUnmount() {
@@ -50,7 +71,6 @@ class ProjectForm extends React.Component {
   }
 
   handleSubmit(e) {
-    // formData.append('project[steps_attributes][]', step.photoFile)
     e.preventDefault();
     const formData = new FormData();
     formData.append('project[title]', this.state.title);
@@ -63,12 +83,16 @@ class ProjectForm extends React.Component {
         formData.append('project[steps_attributes][][photo]', step.photoFile);
       }
     });
-    
+
     if (this.state.photoFile) {
       formData.append('project[photo]', this.state.photoFile);
     }
 
-    this.props.processForm(formData).then(res => this.props.history.push(`/projects/${res.project.id}`));
+    let data;
+    if ( this.props.formType === 'edit' ) data = { formData: formData, id: this.props.project.id };
+    else data = formData
+
+    this.props.processForm(data).then(res => this.props.history.push(`/projects/${res.project.id}`));
   }
 
   addStep() {
@@ -81,7 +105,7 @@ class ProjectForm extends React.Component {
       step.body = value;
       this.setState({stepsAttributes: this.state.stepsAttributes});
     };
-  };
+  }
 
   stepFileUpdate(idx) {
     return (e) => {
@@ -91,7 +115,7 @@ class ProjectForm extends React.Component {
       reader.onloadend = () => {
         step.photoUrl = reader.result;
         step.photoFile = file;
-        this.setState({stepsAttributes: this.state.stepsAttributes})
+        this.setState({stepsAttributes: this.state.stepsAttributes});
       };
       if (file) {
         reader.readAsDataURL(file);
@@ -100,7 +124,7 @@ class ProjectForm extends React.Component {
         step.photoFile = file;
         this.setState({stepsAttributes: this.state.stepsAttributes});
       }
-    }
+    };
   }
 
   removeStep(idx) {
@@ -158,15 +182,15 @@ class ProjectForm extends React.Component {
     const steps = this.state.stepsAttributes.map((step, idx) => {
       return (
         <StepForm
-          key={idx}
-          idx={idx}
-          step={step}
-          stepUpdate={this.stepUpdate}
-          stepFileUpdate={this.stepFileUpdate}
-          removeStep={this.removeStep}
-          quillModules={quillModules}
-          quillFormats={quillFormats}
-          />
+        key={idx}
+        idx={idx}
+        step={step}
+        stepUpdate={this.stepUpdate}
+        stepFileUpdate={this.stepFileUpdate}
+        removeStep={this.removeStep}
+        quillModules={quillModules}
+        quillFormats={quillFormats}
+        />
       );
     });
 
@@ -214,7 +238,5 @@ class ProjectForm extends React.Component {
     );
   }
 }
-
-//
 
 export default ProjectForm;

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import React from 'react';
-import { requestProject } from '../../actions/project_actions';
+import { requestProject, deleteProject } from '../../actions/project_actions';
 import ProjectShow from './project_show';
 
 const msp = (state, ownProps) => {
@@ -17,9 +17,9 @@ const msp = (state, ownProps) => {
 };
 
 const mdp = dispatch => {
-
   return {
-    requestProject: id => dispatch(requestProject(id))
+    requestProject: id => dispatch(requestProject(id)),
+    deleteProject: id => dispatch(deleteProject(id))
   };
 };
 

@@ -8,6 +8,7 @@ import UserProfileContainer from './user/profile_container';
 import FeaturedProjectsContainer from './projects/featured_projects_container';
 import ProjectShowContainer from './projects/project_show_container';
 import CreateProjectFormContainer from './project_form/create_project_form_container';
+import EditProjectFormContainer from './project_form/edit_project_form_container';
 import Home from './home/home';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 
@@ -35,6 +36,7 @@ const App = ({store}) => {
       <AuthRoute exact path="/login" component={LogInFormContainer} />
       <AuthRoute exact path="/signup" component={SignUpFormContainer} />
       <ProtectedRoute exact path="/project/create" component={CreateProjectFormContainer} />
+      <ProtectedRoute exact path="/projects/:projectId/edit" component={EditProjectFormContainer} />
       <ProtectedRoute exact path="/users/:userId" component={UserProfileContainer} />
 
       <footer id="gbl-footer"></footer>
