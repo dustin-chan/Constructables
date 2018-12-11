@@ -3,7 +3,7 @@ import { Route, Redirect, Switch, Link, HashRouter } from 'react-router-dom';
 
 import SignUpFormContainer from './session_form/sign_up_form_container';
 import LogInFormContainer from './session_form/log_in_form_container';
-import HeaderContainer from './header/auth_container';
+import HeaderContainer from './header/header_container';
 import UserProfileContainer from './user/profile_container';
 import FeaturedProjectsContainer from './projects/featured_projects_container';
 import ProjectShowContainer from './projects/project_show_container';

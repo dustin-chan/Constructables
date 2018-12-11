@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import SearchFormContainer from '../search/search_container';
 
 const Header = ({currentUser, logOut, logIn}) => {
   if (currentUser) {
@@ -17,8 +18,7 @@ const Header = ({currentUser, logOut, logIn}) => {
 
   return (
     <div>
-      <form onSubmit=`this.props.`>
-      </form>
+      <SearchFormContainer/>
       <nav className="login-signup">
         <Link className="login" to="/login">Login</Link>
         <Link className="signup" to="/signUp">Sign Up</Link>
