@@ -6,8 +6,8 @@ export const REMOVE_PROJECT = 'REMOVE_PROJECT';
 export const RECEIVE_PROJECT_ERRORS = 'RECEIVE_PROJECT_ERRORS';
 export const REMOVE_ERRORS = 'REMOVE_ERRORS'
 
-export const requestProjects = () => dispatch => {
-  return ProjectAPIUtil.fetchProjects().then(projects => dispatch(receiveProjects(projects)));
+export const requestProjects = searchTerm => dispatch => {
+  return ProjectAPIUtil.fetchProjects(searchTerm).then(projects => dispatch(receiveProjects(projects)));
 };
 
 const receiveProjects = projects => {

@@ -17,7 +17,9 @@ class Api::ProjectsController < ApplicationController
   end
 
   def index
-    @projects = Project.where(featured: :true).includes(:user)
+    projects = search_term ? Project.where(title: "#{search_term}%") : Project.all
+
+    @projects = projects
   end
 
   def show
@@ -42,8 +44,12 @@ class Api::ProjectsController < ApplicationController
   private
 
   def project_params
-      params.require(:project).permit(:title, :featured, :category, :description,
-        :photo, steps_attributes: [:body, :photo] )
+    params.require(:project).permit(:title, :featured, :category, :description,
+      :photo, steps_attributes: [:body, :photo] )
+  end
+
+  def search_term
+    params[:searchTerm]
   end
 end
  # => [:body]

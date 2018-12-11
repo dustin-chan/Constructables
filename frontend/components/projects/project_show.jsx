@@ -21,17 +21,29 @@ class ProjectShow extends React.Component {
   }
 
   render() {
-    //
     if (!this.props.project) {
       return <div/>;
     }
 
-    let protectedButtons;
-    debugger
-    // if ( ) SET CONDITIONAL FOR CURRENT USER
-
     const { project, steps } = this.props;
     const { title, description, user_id: userId, authorUsername, photoUrl } = project;
+
+    let protectedButtons;
+    if ( this.props.currentUserId === userId ) {
+      protectedButtons = (
+        <div className="protected-project-buttons">
+          <div className="project-edit-link">
+            <Link to={`/projects/${project.id}/edit`}>
+              Edit Project
+            </Link>
+          </div>
+          <button className='project-delete-link' onClick={() => this.deleteProject(this.props.project.id).then(this.props.history.push('/'))}>Delete Project</button>
+        </div>
+      );
+    } else {
+      protectedButtons = '';
+    }
+
     let stepsJsx;
     if (steps[0]) {
       stepsJsx = steps.map((step, idx) => (
@@ -43,23 +55,17 @@ class ProjectShow extends React.Component {
     } else {
       stepsJsx = '';
     }
+
     return (
       <div className="project-show">
         <ul className="project-show-ul">
-          <div className={`parallax-show project-photo-${project.id}`} />
-          <li className="project-title">{title}</li>
-          <li className="project-quill" dangerouslySetInnerHTML={{__html: description}}></li>
-          {stepsJsx}
+          <div className={`parallax-show project-photo-${ project.id }`} />
+          <li className="project-title">{ title }</li>
+          <li className="project-quill" dangerouslySetInnerHTML={{ __html: description }}></li>
+          { stepsJsx }
         </ul>
 
-        <div className="protected-project-buttons">
-          <div className="project-edit-link">
-            <Link to={`/projects/${project.id}/edit`}>
-              Edit Project
-            </Link>
-          </div>
-          <button className='project-delete-link' onClick={() => this.deleteProject(this.props.project.id).then(this.props.history.push('/'))}>Delete Project</button>
-        </div>
+        { protectedButtons }
       </div>
     );
   }
