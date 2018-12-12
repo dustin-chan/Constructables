@@ -8,6 +8,7 @@ class SearchForm extends React.Component {
     // debugger
     this.state = { searchTerm: '' };
     this.update = this.update.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   update(field) {
@@ -18,15 +19,15 @@ class SearchForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-
-    this.props.fetchProjects(data).then(res => this.props.history.push(`/projects/${res.project.id}`));
+    debugger
+    this.props.requestProjects(this.state.searchTerm).then(res => this.props.history.push(`/howto/`));
   }
 
   render() {
     return (
       <form className="search-form" onSubmit={this.handleSubmit}>
-        <input type="text" value="" onChange={this.update('searchTerm')} />
-        <button>Search</button>
+        <input type="text" value={`${this.state.searchTerm}`} onChange={this.update('searchTerm')} />
+        <button className="search-button">Search</button>
       </form>
     );
   }

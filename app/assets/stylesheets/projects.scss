@@ -2,6 +2,40 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.search-form {
+  position: absolute;
+  left: 300px;
+  top: 27px;
+}
+
+.search-projects {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 100px 10% 10% 10%;
+}
+
+.search-title {
+  position: absolute;
+  left: 11vw;
+  top: 142px;
+  font-size: 20px;
+}
+
+.search-background {
+  background-color: white;
+  position: fixed;
+  z-index: -100;
+  height: 100vh;
+  width: 100vw;
+  top: 0;
+}
+
+.search-button {
+  padding: 5px;
+  border-radius: 3px;
+  background-color: lightgrey;
+}
+
 .featured_projects {
   display: flex;
   flex-wrap: wrap;
@@ -9,16 +43,17 @@
   background-color: transparent;
 }
 
-.featured_project_item {
+.project_item {
   position: relative;
   color: rgb(22, 22, 29);
   width: 323px;
   height: 349px;
   margin: 10px;
   border-radius: 10px;
+  box-shadow: inset 2px 2px 2px rgba(0, 0, 0, 0.25)
 }
 
-.featured_project_item > .project_details {
+.project_item > .project_details {
   font-weight: bold;
   color: black;
   display: flex;
@@ -29,8 +64,9 @@
   width: 100%;
 }
 
-.featured_project_item .project_detail {
+.project_item .project_detail {
   margin-left: 15px;
+  z-index: 1;
 }
 
 .section_title {
@@ -132,13 +168,12 @@ strong {
   justify-content: center;
   overflow: hidden;
   border-radius: 10px;
-  box-shadow: inset 2px 2px 2px rgba(0, 0, 0, .25);
+  z-index: -1;
 }
 
 .index-image {
   height: 100%;
   background-size: cover;
-  z-index: -2;
 }
 
 .project-edit-link {

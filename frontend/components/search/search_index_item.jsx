@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-class FeaturedProjectItem extends React.Component {
+class SearchProjectItem extends React.Component {
   constructor(props) {
     super(props);
     this.id = this.props.project.id;
@@ -21,4 +21,4 @@ class FeaturedProjectItem extends React.Component {
   }
 }
 
-export default FeaturedProjectItem;
+export default SearchProjectItem;

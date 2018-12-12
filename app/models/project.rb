@@ -3,6 +3,7 @@ class Project < ApplicationRecord
 
   belongs_to :user
   has_many :steps, dependent: :destroy
+  has_many :comments
 
   has_one_attached :photo
 

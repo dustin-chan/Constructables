@@ -8,6 +8,7 @@ class User < ApplicationRecord
   after_initialize :ensure_session_token
 
   has_many :projects
+  has_many :comments
 
   has_one_attached :photo
 

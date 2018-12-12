@@ -17,13 +17,13 @@ class Api::ProjectsController < ApplicationController
   end
 
   def index
-    projects = search_term ? Project.where(title: "#{search_term}%") : Project.all
+    projects = search_term ? Project.where("title LIKE ?", "%#{search_term}%") : Project.all
 
     @projects = projects
   end
 
   def show
-    @project = Project.includes(:steps, :user).find(params[:id])
+    @project = Project.includes(:steps, :user, :comments).find(params[:id])
   end
 
   def update

@@ -6,6 +6,7 @@ import LogInFormContainer from './session_form/log_in_form_container';
 import HeaderContainer from './header/header_container';
 import UserProfileContainer from './user/profile_container';
 import FeaturedProjectsContainer from './projects/featured_projects_container';
+import SearchIndexContainer from './search/search_index_container';
 import ProjectShowContainer from './projects/project_show_container';
 import CreateProjectFormContainer from './project_form/create_project_form_container';
 import EditProjectFormContainer from './project_form/edit_project_form_container';
@@ -32,6 +33,7 @@ const App = ({store}) => {
 
       <Route exact path="/" component={Home} />
       <Route exact path="/featured/" component={FeaturedProjectsContainer} />
+      <Route exact path="/howto/" component={SearchIndexContainer} />
       <Route exact path="/projects/:projectId" component={ProjectShowContainer} />
       <AuthRoute exact path="/login" component={LogInFormContainer} />
       <AuthRoute exact path="/signup" component={SignUpFormContainer} />

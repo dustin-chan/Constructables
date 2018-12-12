@@ -1,8 +1,9 @@
 export const fetchProjects = data => {
+  debugger
   return $.ajax({
     method: 'GET',
     url: '/api/projects',
-    data
+    data: {searchTerm: data}
   });
 };
 
@@ -26,7 +27,6 @@ export const createProject = formData => {
 };
 
 export const updateProject = (data) => {
-  debugger
   return $.ajax({
     method: 'PATCH',
     url: `/api/projects/${data.id}`,

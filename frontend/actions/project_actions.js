@@ -1,18 +1,19 @@
 import * as ProjectAPIUtil from '../util/project_api_util';
 
-export const RECEIVE_ALL_PROJECTS = 'RECEIVE_ALL_PROJECTS';
+export const RECEIVE_PROJECTS = 'RECEIVE_PROJECTS';
 export const RECEIVE_PROJECT = 'RECEIVE_PROJECT';
 export const REMOVE_PROJECT = 'REMOVE_PROJECT';
 export const RECEIVE_PROJECT_ERRORS = 'RECEIVE_PROJECT_ERRORS';
 export const REMOVE_ERRORS = 'REMOVE_ERRORS'
 
 export const requestProjects = searchTerm => dispatch => {
+  debugger
   return ProjectAPIUtil.fetchProjects(searchTerm).then(projects => dispatch(receiveProjects(projects)));
 };
 
 const receiveProjects = projects => {
   return {
-    type: RECEIVE_ALL_PROJECTS,
+    type: RECEIVE_PROJECTS,
     projects
   };
 };
