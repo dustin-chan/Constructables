@@ -23,11 +23,12 @@ export const requestProject = (id) => dispatch => {
   return ProjectAPIUtil.fetchProject(id).then(payload => dispatch(receiveProject(payload)));
 };
 
-const receiveProject = ({ project, steps }) => {
+const receiveProject = ({ project, steps, comments }) => {
   return {
     type: RECEIVE_PROJECT,
     project,
-    steps
+    steps,
+    comments
   };
 };
 

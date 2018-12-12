@@ -13,12 +13,11 @@ class Api::CommentsController < ApplicationController
   end
 
   def update
-    debugger
-    @project = Project.find(params[:id])
-    if @project.update_attributes(project_params)
+    @comment = Comment.find(params[:id])
+    if @comment.update_attributes(comment_params)
       render "api/projects/show"
     else
-      render json: @project.errors.full_messages, status: 422
+      render json: @comment.errors.full_messages, status: 422
     end
   end
 

@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link, Redirect } from 'react-router-dom';
 
-class StepForm extends React.Component {
+class CommentForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {title: '', category: '', description: '', steps_attributes: []};
+    this.state = { body: '' };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -20,8 +20,10 @@ class StepForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    const user = Object.assign({}, this.state);
-    this.props.processForm(user).then(res => this.props.history.push(`/users/${res.currentUser.id}`));
+
+    const projectId = ownProps.match.params.projectId;
+
+    this.props.processForm({ projectId });
   }
 
   renderErrors() {
@@ -48,12 +50,8 @@ class StepForm extends React.Component {
         <br/>
       </div>
     );
-    const demoLogIn = () => this.props.logIn(
-        {username: 'Guest', password: 'password'}
-      ).then(res => this.props.history.push(`/users/${res.currentUser.id}`));
+
     return (
-      <div id="login-wrapper">
-        <button className="demo" onClick={demoLogIn}>Demo</button>
         <form className="login-form" onSubmit={this.handleSubmit}>
           {this.renderErrors()}
           <br/>
@@ -77,7 +75,6 @@ class StepForm extends React.Component {
           <br/>
           <input className="authButton" type="submit" value={this.props.formType}/>
         </form>
-      </div>
     );
   }
 }

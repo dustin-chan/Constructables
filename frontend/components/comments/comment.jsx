@@ -6,7 +6,7 @@ class Step extends React.Component {
   }
 
   componentDidMount() {
-    
+
   }
 
   render() {
