@@ -37,8 +37,8 @@ class Api::ProjectsController < ApplicationController
   end
 
   def destroy
-    @project = Project.find(params[:id])
-    @project.destroy
+    project = Project.find(params[:id])
+    project.destroy
   end
 
   private
@@ -52,4 +52,3 @@ class Api::ProjectsController < ApplicationController
     params[:searchTerm]
   end
 end
- # => [:body]
