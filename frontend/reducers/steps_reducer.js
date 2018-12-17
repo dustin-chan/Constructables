@@ -5,7 +5,7 @@ import {
 import merge from 'lodash/merge';
 
 export default (state = {}, action) => {
-  debugger
+  
   let newState;
   switch(action.type) {
     case RECEIVE_PROJECT:
