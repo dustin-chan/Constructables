@@ -13,7 +13,7 @@ class SessionForm extends React.Component {
   }
 
   componentDidMount() {
-    $('#login-wrapper').parallax({imageSrc: `${window.glassblowing}`});
+    // $('#login-wrapper').parallax({imageSrc: `${window.glassblowing}`});
   }
 
   update(field) {
@@ -57,6 +57,7 @@ class SessionForm extends React.Component {
       ).then(res => this.props.history.push(`/users/${res.currentUser.id}`));
     return (
       <div id="login-wrapper">
+        <img className="auth-img" src={`${window.glassblowing}`}/>
         <button className="demo" onClick={demoLogIn}>Demo</button>
         <form className="login-form" onSubmit={this.handleSubmit}>
           {this.renderErrors()}

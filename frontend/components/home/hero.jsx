@@ -2,12 +2,12 @@ import React from 'react';
 
 class Hero extends React.Component {
   componentDidMount() {
-    $('.hero').parallax({imageSrc: `${window.craft_leaves}`});
+    // $('.hero').parallax({imageSrc: `${window.craft_leaves}`});
   }
 
   render() {
     return (
-        <div className="hero"></div>
+        <div className="hero"><img className="hero" src={`${window.craft_leaves}`}/></div>
     );
   }
 };

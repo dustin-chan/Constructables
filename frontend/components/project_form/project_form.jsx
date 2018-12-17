@@ -7,7 +7,7 @@ import StepForm from '../step_form/step_form';
 class ProjectForm extends React.Component {
   constructor(props) {
     super(props);
-    // 
+    //
     this.state = this.props.project;
     this.quillUpdate = this.quillUpdate.bind(this);
     this.fileUpdate = this.fileUpdate.bind(this);
@@ -24,7 +24,7 @@ class ProjectForm extends React.Component {
 
   componentDidMount() {
     if ( this.props.formType === 'edit' ) {
-      // 
+      //
       this.props.requestProject(this.props.match.params.projectId);
     }
   }
@@ -77,7 +77,7 @@ class ProjectForm extends React.Component {
     formData.append('project[featured]', this.state.featured);
     formData.append('project[category]', this.state.category);
     formData.append('project[description]', this.state.description);
-    this.state.stepsAttributes.map(step => {
+    this.state.stepsAttributes.forEach(step => {
       formData.append('project[steps_attributes][][body]', step.body);
       if (step.photoFile) {
         formData.append('project[steps_attributes][][photo]', step.photoFile);

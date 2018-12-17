@@ -26,8 +26,8 @@ class ProjectShow extends React.Component {
     //   this.requestProject(this.props.match.params.projectId);
     //   this.state.count += 1
     // }
-    const projectParallaxDiv = $(`.project-photo-${this.props.project.id}`);
-    projectParallaxDiv.parallax({imageSrc: `${this.props.project.photoUrl}`, speed: .3});
+    // const projectParallaxDiv = $(`.project-photo-${this.props.project.id}`);
+    // projectParallaxDiv.parallax({imageSrc: `${this.props.project.photoUrl}`, speed: .3});
 
     window.scrollTo(0, 0);
   }
@@ -113,7 +113,7 @@ class ProjectShow extends React.Component {
     return (
       <div className="project-show">
         <ul className="project-show-ul">
-          <div className={`parallax-show project-photo-${ project.id }`} />
+          <div className={`parallax-show project-photo-${ project.id }`}><img className="parallax-show-img" src={`${this.props.project.photoUrl}`}/></div>
           <li className="project-title">{ title }</li>
           <li className="project-quill" dangerouslySetInnerHTML={{ __html: description }}></li>
           { stepsJsx }
