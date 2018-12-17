@@ -7,7 +7,7 @@ export const RECEIVE_PROJECT_ERRORS = 'RECEIVE_PROJECT_ERRORS';
 export const REMOVE_ERRORS = 'REMOVE_ERRORS'
 
 export const requestProjects = searchTerm => dispatch => {
-  debugger
+  
   return ProjectAPIUtil.fetchProjects(searchTerm).then(projects => dispatch(receiveProjects(projects)));
 };
 
@@ -23,7 +23,7 @@ export const requestProject = (id) => dispatch => {
   return ProjectAPIUtil.fetchProject(id).then(payload => dispatch(receiveProject(payload)));
 };
 
-const receiveProject = ({ project, steps, comments }) => {
+export const receiveProject = ({ project, steps, comments }) => {
   return {
     type: RECEIVE_PROJECT,
     project,
@@ -52,7 +52,6 @@ export const createProject = project => dispatch => {
 };
 
 export const updateProject = data => dispatch => {
-  debugger
   return ProjectAPIUtil.updateProject(data).then(project => dispatch(receiveProject(project)),
     err => dispatch(receiveErrors(err.responseJSON)));
 };

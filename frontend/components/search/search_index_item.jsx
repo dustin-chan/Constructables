@@ -10,13 +10,15 @@ class SearchProjectItem extends React.Component {
   render() {
     const project = this.props.project;
     return (
-      <li className="project_item">
-        <Link className="project_image" to={`/projects/${this.id}`}><img className={`index-image project-index-photo-${this.id}`} src={`${project.photoUrl}`}/></Link>
-        <div className="project_details">
-          <Link className="project_detail" to={`/projects/${this.id}`}>{project.title}</Link>
-          <Link className="project_detail" to={`/users/${project.user_id}`}>by {project.authorUsername}</Link>
-        </div>
-      </li>
+      <Link to={`/projects/${this.id}`} className="flex">
+        <li className="project_item">
+          <Link className="project_image" to={`/projects/${this.id}`}><img className={`index-image project-index-photo-${this.id}`} src={`${project.photoUrl}`}/></Link>
+          <div className="project_details">
+            <Link className="project_detail" to={`/projects/${this.id}`}>{project.title}</Link>
+            <Link className="project_detail" to={`/users/${project.user_id}`}>by {project.authorUsername}</Link>
+          </div>
+        </li>
+      </Link>
     );
   }
 }

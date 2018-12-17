@@ -1,8 +1,9 @@
 export const createComment = ({ projectId, comment }) => {
+  
   return $.ajax({
     method: 'POST',
     url: `/api/projects/${ projectId }/comments`,
-    data: comment
+    data: { comment: comment }
   });
 };
 

@@ -6,9 +6,10 @@ class Api::CommentsController < ApplicationController
     @comment.project_id = params[:project_id]
 
     if @comment.save
+      @project = Project.includes(:steps, :user, :comments => [:user]).find(@comment.project_id)
       render "api/projects/show"
     else
-      render json: @project.errors.full_messages, status: 422
+      render json: @comment.errors.full_messages, status: 422
     end
   end
 

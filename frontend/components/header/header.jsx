@@ -10,30 +10,28 @@ class Header extends React.Component {
     this.logIn = this.props.logIn;
   }
 
-
   render() {
-    debugger
-    if (this.currentUser) {
+    if (this.props.currentUser) {
       return (
         <div>
-          <SearchFormContainer history={this.props.history}/>
-          <Link to={`/users/${this.currentUser.id}`}>
+          <Link to={`/users/${this.props.currentUser.id}`}>
           <div className="avatar"/>
           </Link>
           <div className="dropdown">
-            <button className="logout" onClick={this.logOut}>Log Out</button>
+            <button type="button" className="logout" onClick={this.logOut}>Log Out</button>
           </div>
+          <SearchFormContainer history={this.props.history}/>
         </div>
       );
     }
 
     return (
       <div>
-        <SearchFormContainer history={this.props.history}/>
         <nav className="login-signup">
           <Link className="login" to="/login">Login</Link>
           <Link className="signup" to="/signUp">Sign Up</Link>
         </nav>
+        <SearchFormContainer history={this.props.history}/>
       </div>
     );
   }

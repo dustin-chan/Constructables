@@ -23,7 +23,7 @@ class Api::ProjectsController < ApplicationController
   end
 
   def show
-    @project = Project.includes(:steps, :user, :comments).find(params[:id])
+    @project = Project.includes(:steps, :user, :comments => [:user]).find(params[:id])
   end
 
   def update

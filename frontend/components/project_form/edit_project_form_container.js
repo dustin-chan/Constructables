@@ -9,7 +9,7 @@ const msp = (state, ownProps) => {
     || {title: '', photoUrl: '', featured: 'false', category: 'craft', description: '', stepsAttributes: []};
   const stepsAttributes = Object.values(state.entities.steps);
   project.stepsAttributes = stepsAttributes;
-  debugger
+  
   const errors = state.errors;
   return {
     project,

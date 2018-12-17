@@ -8,6 +8,10 @@
   top: 27px;
 }
 
+.flex {
+  display: flex;
+}
+
 .search-projects {
   display: flex;
   flex-wrap: wrap;
@@ -105,7 +109,6 @@
   min-height: 650px;
   max-height: 700px;
   align-self: center;
-  width: 80%;
   background: transparent;
   z-index: -1;
 }

@@ -4,8 +4,10 @@ import { Link, Redirect } from 'react-router-dom';
 class CommentForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { body: '' };
+    this.state = this.props.comment;
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.update = this.update.bind(this);
+    this.renderErrors.bind(this);
   }
 
   componentWillUnmount() {
@@ -21,9 +23,9 @@ class CommentForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
 
-    const projectId = ownProps.match.params.projectId;
+    const projectId = this.props.comment.projectId;
 
-    this.props.processForm({ projectId });
+    this.props.processForm({ projectId, comment: { body: this.state.body } });
   }
 
   renderErrors() {
@@ -37,46 +39,14 @@ class CommentForm extends React.Component {
   }
 
   render() {
-
-    const email = (
-      <div>
-        <input
-          className="input-large"
-          placeholder="Email"
-          type="text"
-          value={this.state.email}
-          onChange={this.update('email')}
-          />
-        <br/>
-      </div>
-    );
-
     return (
-        <form className="login-form" onSubmit={this.handleSubmit}>
-          {this.renderErrors()}
-          <br/>
-          <br/>
-            <input
-              className="input-large"
-              placeholder="Username"
-              type="text"
-              value={this.state.username}
-              onChange={this.update('username')}
-              />
-          <br/>
-            {this.props.formType === 'Sign Me Up !' ? email : ''}
-            <input
-              className="input-large"
-              placeholder="Password"
-              type="password"
-              value={this.state.password}
-              onChange={this.update('password')}
-              />
-          <br/>
-          <input className="authButton" type="submit" value={this.props.formType}/>
-        </form>
+      <form className="comment-form" onSubmit={ this.handleSubmit }>
+        { this.renderErrors() }
+        <input type="textarea" value={ this.state.body } onChange={ this.update('body') }/>
+        <button className="add-comment-button">Add Comment</button>
+      </form>
     );
   }
 }
 
-export default StepFrom;
+export default CommentForm;

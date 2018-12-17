@@ -5,7 +5,7 @@ import StepForm from '../step_form/step_form';
 class SearchForm extends React.Component {
   constructor(props) {
     super(props);
-    // debugger
+    // 
     this.state = { searchTerm: '' };
     this.update = this.update.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -19,7 +19,7 @@ class SearchForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    debugger
+    
     this.props.requestProjects(this.state.searchTerm).then(res => this.props.history.push(`/howto/`));
   }
 

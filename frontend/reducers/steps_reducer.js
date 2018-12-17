@@ -5,10 +5,11 @@ import {
 import merge from 'lodash/merge';
 
 export default (state = {}, action) => {
+  debugger
   let newState;
   switch(action.type) {
     case RECEIVE_PROJECT:
-      return merge({}, state, action.steps);
+      return action.steps;
     case REMOVE_PROJECT:
       return {};
     default:

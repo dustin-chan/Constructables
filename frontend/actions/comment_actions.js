@@ -1,4 +1,4 @@
-import * as ProjectAPIUtil from '../util/project_api_util';
+import * as CommentAPIUtil from '../util/comment_api_util';
 import { receiveProject } from './project_actions';
 
 export const REMOVE_COMMENT = 'REMOVE_COMMENT';
@@ -6,6 +6,7 @@ export const RECEIVE_COMMENT_ERRORS = 'RECEIVE_COMMENT_ERRORS';
 export const REMOVE_ERRORS = 'REMOVE_ERRORS';
 
 const receiveErrors = errors => {
+  
   return {
     type: RECEIVE_COMMENT_ERRORS,
     errors
@@ -20,12 +21,19 @@ export const removeErrors = () => {
 };
 
 export const createComment = data => dispatch => {
-  return ProjectAPIUtil.createProject(data).then(project => dispatch(receiveProject(project)),
-    err => dispatch(receiveErrors(err.responseJSON)));
+  
+  return CommentAPIUtil.createComment(
+    data).
+  then(
+    project =>
+    dispatch
+    (receiveProject(project)),
+    err => dispatch(receiveErrors
+      (err.responseJSON)));
 };
 
 export const updateComment = data => dispatch => {
-  return ProjectAPIUtil.updateProject(data).then(project => dispatch(receiveProject(project)),
+  return CommentAPIUtil.updateComment(data).then(project => dispatch(receiveProject(project)),
     err => dispatch(receiveErrors(err.responseJSON)));
 };
 

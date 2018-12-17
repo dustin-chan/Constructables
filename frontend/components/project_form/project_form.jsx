@@ -7,7 +7,7 @@ import StepForm from '../step_form/step_form';
 class ProjectForm extends React.Component {
   constructor(props) {
     super(props);
-    // debugger
+    // 
     this.state = this.props.project;
     this.quillUpdate = this.quillUpdate.bind(this);
     this.fileUpdate = this.fileUpdate.bind(this);
@@ -24,7 +24,7 @@ class ProjectForm extends React.Component {
 
   componentDidMount() {
     if ( this.props.formType === 'edit' ) {
-      // debugger
+      // 
       this.props.requestProject(this.props.match.params.projectId);
     }
   }
@@ -154,7 +154,7 @@ class ProjectForm extends React.Component {
         ['bold', 'italic',
         'underline', 'strike', {'script': 'sub'}, {'script': 'super'}],
         [{'list': 'ordered'}, {'list': 'bullet'},
-         {'indent': '-1'}, {'indent': '+1'}, {'align': []}],
+         {'indent': '-1'}, {'indent': '+1'}],
         ['link', 'image', 'video'],
         ['clean']
       ],
@@ -173,7 +173,6 @@ class ProjectForm extends React.Component {
       "header",
       "indent",
       "list",
-      "align",
       "direction",
       "image",
       "video"

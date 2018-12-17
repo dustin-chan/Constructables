@@ -13,7 +13,6 @@ export default (state = {}, action) => {
     case RECEIVE_PROJECT:
       return merge({}, state, {[action.project.id]: action.project});
     case REMOVE_PROJECT:
-    debugger
       newState = state;
       delete newState[action.projectId];
       return newState;

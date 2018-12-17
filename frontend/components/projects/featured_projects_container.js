@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import React from 'react';
-import { requestProjects } from '../../actions/project_actions';
+import { requestProjects, requestProject } from '../../actions/project_actions';
 import FeaturedProjects from './featured_projects';
 
 const msp = (state) => {
@@ -12,7 +12,8 @@ const msp = (state) => {
 
 const mdp = dispatch => {
   return {
-    requestProjects: () => dispatch(requestProjects())
+    requestProjects: () => dispatch(requestProjects()),
+    requestProject: (id) => dispatch(requestProject(id))
   };
 };
 
