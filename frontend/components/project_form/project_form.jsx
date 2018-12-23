@@ -90,6 +90,7 @@ class ProjectForm extends React.Component {
 
     let data;
     if ( this.props.formType === 'edit' ) data = { formData: formData, id: this.props.project.id };
+    // ADD LOGIC FOR IF PHOTOFILE IS NULL/NOT UPDATED THEN DELETE IT FROM THE OBJECT, POSSIBLY IN TOP OF APPEND ?
     else data = formData;
 
     this.props.processForm(data).then(res => this.props.history.push(`/projects/${res.project.id}`));
