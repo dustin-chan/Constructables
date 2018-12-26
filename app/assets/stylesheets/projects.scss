@@ -103,10 +103,7 @@
   width: 100%;
   overflow: hidden;
   background: transparent;
-  z-index: -100;
-  align-items: center;
-  display: flex;
-  flex-direction: column;
+  z-index: -1;
 }
 
 .parallax-show-img {
@@ -114,10 +111,9 @@
   border-bottom: 1px solid #e4e4e4;
   border-top: 1px solid #e4e4e4;
   size: cover;
-  min-width: 100%;
-  min-height: 100vh;
+  width: 100%;
   background: transparent;
-  z-index: -100;
+  z-index: -5;
 }
 
 .step-parallax-show {
