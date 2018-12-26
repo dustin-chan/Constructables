@@ -49,15 +49,15 @@ class ProjectShow extends React.Component {
     const { project, steps, comments } = this.props;
     const { title, description, user_id: userId, authorUsername, photoUrl } = project;
 
-    // <div className="project-edit-link">
-    // <Link to={`/projects/${project.id}/edit`}>
-    // Edit Project
-    // </Link>
-    // </div>
     let protectedButtons;
     if ( this.props.currentUserId === userId ) {
       protectedButtons = (
         <div className="protected-project-buttons">
+          <div className="project-edit-link">
+            <Link to={`/projects/${project.id}/edit`}>
+              Edit Project
+            </Link>
+          </div>
           <button className='project-delete-link' onClick={() => this.deleteProject(this.props.project.id).then(this.props.history.push('/'))}>Delete Project</button>
         </div>
       );

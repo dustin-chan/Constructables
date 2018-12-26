@@ -1,14 +1,11 @@
 class Api::ProjectsController < ApplicationController
   def create
 
-    @project = Project.new(project_params)
+    @project = Project.new(create_project_params)
 
     @project.user_id = current_user.id
-    if @project.featured == 'false'
-      @project.featured = :false
-    else
-      @project.featured = :true
-    end
+    @project.featured = :false
+
     if @project.save
       render "api/projects/show"
     else
@@ -27,8 +24,44 @@ class Api::ProjectsController < ApplicationController
   end
 
   def update
+    require 'open-uri'
+
     @project = Project.find(params[:id])
-    if @project.update_attributes(project_params)
+    updated_steps = updated_steps_params[:steps_attributes]
+
+    updated_steps.each do |updated_step|
+      next if updated_step[:photo] #add update step to project_steps? HOW TO KEPP IN ORDER?
+      # ActiveRecord::Base.connection_pool.with_connection do
+      #   content_provider.logo.attach(
+      #     io: photo,
+      #     filename: content_provider.website + ".png",
+      #     content_type: "image/png"
+      #   )
+      # end
+      if updated_step[:photoUrl]
+        # updated_step[:photo] = open( updated_step[:photoUrl] )
+
+        updated_step[:photo] = open(updated_step[:photoUrl])
+
+      end
+      # steps.each do |step|
+      #   debugger
+      #   if updated_step[:photo]
+      #   elsif
+      #   elsif
+      #   end
+      #
+      #   if step[:body] == updated_step[:body] && url_for(step.photo) == updated_step[:photoUrl]
+      #
+      #   end
+      # end
+    end
+
+    new_updated_project_params = updated_project_params
+
+    new_updated_project_params[:steps_attributes] = updated_steps
+
+    if @project.update_attributes(updated_project_params)
       render "api/projects/show"
     else
       render json: @project.errors.full_messages, status: 422
@@ -42,9 +75,17 @@ class Api::ProjectsController < ApplicationController
 
   private
 
-  def project_params
-    params.require(:project).permit(:title, :featured, :category, :description,
-      :photo, steps_attributes: [:body, :photo] )
+  def create_project_params
+    params.require(:project).permit(:title, :category, :description,
+      :photo, steps_attributes: [:body, :photo, :photoUrl] )
+  end
+
+  def updated_project_params
+    params.require(:project).permit( :title, :category, :description, :photo )
+  end
+
+  def updated_steps_params
+    params.require(:project).permit( steps_attributes: [:body, :photo, :photoUrl] )
   end
 
   def search_term
