@@ -82,7 +82,7 @@ class ProjectForm extends React.Component {
       if (step.photoFile) {
         formData.append('project[steps_attributes][][photo]', step.photoFile);
       } else if (step.photoUrl) {
-        formData.append('project[steps_attributes][][photoUrl]', step.photoUrl);
+        formData.append('project[steps_attributes][][photo_url]', step.photoUrl);
       }
     });
 
