@@ -7,11 +7,7 @@ class FeaturedProjects extends React.Component {
   }
 
   componentDidMount() {
-    // sessionStorage.set() STORE IN SESSION NOT LOCALLY
     this.props.requestProjects();
-    // this.props.requestProject(41);
-    // this.props.requestProject(42);
-    // this.props.requestProject(43);
   }
 
   componentDidUpdate() {

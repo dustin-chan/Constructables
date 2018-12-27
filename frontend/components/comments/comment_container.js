@@ -1,29 +1,23 @@
 import { connect } from 'react-redux';
 import React from 'react';
-import { requestProject, deleteProject } from '../../actions/project_actions';
-import ProjectShow from './project_show';
+// import { requestProject, deleteProject } from '../../actions/project_actions';
+import Comment from './comment';
 
 const msp = (state, ownProps) => {
-  
   const currentUserId = state.session.id;
-  const projectId = ownProps.match.params.projectId;
-  const steps = Object.values(state.entities.steps).map(step => {
-    if (step.projectId === parseInt(projectId)) {
-      return step;
-    }
-  });
+  const comment = ownProps.comment;
+
   return {
-    project: state.entities.projects[projectId],
-    steps,
+    comment,
     currentUserId
   };
 };
 
-const mdp = dispatch => {
-  return {
-    requestProject: id => dispatch(requestProject(id)),
-    deleteProject: id => dispatch(deleteProject(id))
-  };
-};
+// const mdp = dispatch => {
+//   return {
+//     requestProject: id => dispatch(requestProject(id)),
+//     deleteProject: id => dispatch(deleteProject(id))
+//   };
+// };
 
-export default connect(msp, mdp)(ProjectShow);
+export default connect(msp, null)(Comment);

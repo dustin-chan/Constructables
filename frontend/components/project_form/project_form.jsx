@@ -2,12 +2,12 @@ import React from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import ReactQuill from 'react-quill';
 import StepForm from '../step_form/step_form';
-// import 'react-quill/dist/quill.snow.css';
+
 
 class ProjectForm extends React.Component {
   constructor(props) {
     super(props);
-    //
+
     this.state = this.props.project;
     this.quillUpdate = this.quillUpdate.bind(this);
     this.fileUpdate = this.fileUpdate.bind(this);
@@ -24,7 +24,6 @@ class ProjectForm extends React.Component {
 
   componentDidMount() {
     if ( this.props.formType === 'edit' ) {
-      //
       this.props.requestProject(this.props.match.params.projectId);
     }
   }
@@ -42,10 +41,6 @@ class ProjectForm extends React.Component {
     }
   }
 
-  componentWillUnmount() {
-    // this.props.removeErrors();
-  }
-
   update(field) {
     return e => this.setState({
       [field]: e.target.value
@@ -57,7 +52,7 @@ class ProjectForm extends React.Component {
       [field]: value
     });
   }
-  // this.setState({description: value});
+
   fileUpdate(e) {
     const reader = new FileReader();
     const file = e.currentTarget.files[0];
@@ -92,7 +87,7 @@ class ProjectForm extends React.Component {
 
     let data;
     if ( this.props.formType === 'edit' ) data = { formData: formData, id: this.props.project.id };
-    // ADD LOGIC FOR IF PHOTOFILE IS NULL/NOT UPDATED THEN DELETE IT FROM THE OBJECT, POSSIBLY IN TOP OF APPEND ?
+
     else data = formData;
 
     this.props.processForm(data).then(res => this.props.history.push(`/projects/${res.project.id}`));

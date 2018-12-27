@@ -7,7 +7,7 @@ json.project do
     json.photoUrl = 'none'
   end
 end
-#
+
 if @project.steps
   json.steps do
     @project.steps.each do |step|
@@ -25,16 +25,16 @@ if @project.steps
   end
 end
 
-# if @project.comments
-#   json.comments do
-#     @project.comments.each do |comment|
-#       json.set! comment.id do
-#         json.id comment.id
-#         json.body comment.body
-#         json.parent_comment_id comment.parent_comment_id
-#         json.authorId comment.user.id
-#         json.authorUsername comment.user.username
-#       end
-#     end
-#   end
-# end
+if @project.comments
+  json.comments do
+    @project.comments.each do |comment|
+      json.set! comment.id do
+        json.id comment.id
+        json.body comment.body
+        json.parent_comment_id comment.parent_comment_id
+        json.authorId comment.user.id
+        json.authorUsername comment.user.username
+      end
+    end
+  end
+end

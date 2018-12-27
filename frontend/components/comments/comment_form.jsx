@@ -10,6 +10,10 @@ class CommentForm extends React.Component {
     this.renderErrors.bind(this);
   }
 
+  componentDidMount() {
+    this.setState( { editing: false } );
+  }
+
   componentWillUnmount() {
     this.props.removeErrors();
   }

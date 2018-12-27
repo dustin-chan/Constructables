@@ -14,7 +14,8 @@ const msp = (state, ownProps) => {
   });
 
   let comments;
-  
+  debugger
+
   if ( state.entities.comments ) {
     comments = Object.values(state.entities.comments);
   }

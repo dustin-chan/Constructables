@@ -6,7 +6,7 @@ export default (state = {}, action) => {
   let newState;
   switch(action.type) {
     case RECEIVE_PROJECT:
-      
+    debugger
       return action.comments;
     case REMOVE_COMMENT:
       newState = state;
