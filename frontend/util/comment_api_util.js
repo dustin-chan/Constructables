@@ -1,5 +1,5 @@
 export const createComment = ({ projectId, comment }) => {
-  
+
   return $.ajax({
     method: 'POST',
     url: `/api/projects/${ projectId }/comments`,
@@ -7,10 +7,10 @@ export const createComment = ({ projectId, comment }) => {
   });
 };
 
-export const updateComment = ({ projectId, comment }) => {
+export const updateComment = ({ comment }) => {
   return $.ajax({
     method: 'PATCH',
-    url: `/api/projects/${ projectId }/comments/${comment.id}`,
+    url: `/api/projects/${ comment.projectId }/comments/${comment.id}`,
     data: comment
   });
 };

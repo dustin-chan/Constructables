@@ -16,21 +16,30 @@ class Step extends React.Component {
   }
 
   render() {
-    let commentEdit;
+    let commentButtons;
 
     if ( this.props.currentUserId === this.state.authorId ) {
-      commentEdit = (
-        <button onClick={ this.editComment }>Edit Comment</button>
+      commentButtons = (
+        <div>
+          <button onClick={ this.editComment }>Edit Comment</button>
+          <button onClick={ () => this.props.deleteComment( this.state.projectId ) } />
+        </div>
       );
     } else {
-      commentEdit = '';
+      commentButtons = '';
+    }
+
+    if ( this.state.editing === true ) {
+      return (
+        <EditCommentFormContainer comment={this.state} />
+      )
     }
 
     return (
       <div className="comments-container">
         <li key={`comment-body-${this.state.id}`} className="comment">{this.state.body}</li>
         <li key={`comment-username=${this.state.id}`} className="comment-username">by {this.state.authorUsername}</li>
-        {commentEdit}
+        { commentButtons }
       </div>
     );
   }

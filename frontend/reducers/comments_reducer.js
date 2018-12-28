@@ -7,7 +7,12 @@ export default (state = {}, action) => {
   switch(action.type) {
     case RECEIVE_PROJECT:
     debugger
-      return action.comments;
+      if ( action.comments ) {
+        return action.comments;
+      } else {
+        return state;
+      }
+      break;
     case REMOVE_COMMENT:
       newState = state;
       delete newState[action.commentId];

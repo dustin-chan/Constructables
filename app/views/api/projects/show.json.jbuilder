@@ -32,6 +32,7 @@ if @project.comments
         json.id comment.id
         json.body comment.body
         json.parent_comment_id comment.parent_comment_id
+        json.projectId comment.project_id
         json.authorId comment.user.id
         json.authorUsername comment.user.username
       end

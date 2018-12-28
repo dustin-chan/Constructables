@@ -7,7 +7,7 @@ import CommentContainer from '../comments/comment_container';
 class ProjectShow extends React.Component {
   constructor(props) {
     super(props);
-    this.state = this.props.comments || '';
+    this.state = {comments: this.props.comments} || {comments: []};
 
     this.deleteProject = this.props.deleteProject.bind(this);
     this.requestProject = this.props.requestProject.bind(this);
