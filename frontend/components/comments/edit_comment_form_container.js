@@ -6,6 +6,8 @@ const msp = ({ errors }, ownProps) => {
   return {
     comment: ownProps.comment,
     errors: errors,
+    updateBody: ownProps.updateBody,
+    toggleEdit: ownProps.toggleEdit,
     formType: 'edit'
   };
 };

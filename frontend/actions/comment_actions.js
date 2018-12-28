@@ -6,7 +6,7 @@ export const RECEIVE_COMMENT_ERRORS = 'RECEIVE_COMMENT_ERRORS';
 export const REMOVE_ERRORS = 'REMOVE_ERRORS';
 
 const receiveErrors = errors => {
-  
+
   return {
     type: RECEIVE_COMMENT_ERRORS,
     errors
@@ -21,7 +21,7 @@ export const removeErrors = () => {
 };
 
 export const createComment = data => dispatch => {
-  
+
   return CommentAPIUtil.createComment(
     data).
   then(
@@ -45,5 +45,5 @@ const removeComment = id => {
 };
 
 export const deleteComment = data => dispatch => {
-  return ProjectAPIUtil.deleteProject(data).then(() => dispatch(removeComment(id)));
+  return CommentAPIUtil.deleteComment(data).then(() => dispatch(removeComment(data.commentId)));
 };

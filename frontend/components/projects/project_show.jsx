@@ -82,11 +82,11 @@ class ProjectShow extends React.Component {
 
         { protectedButtons }
         <br/>
-        <ul>
-        { commentsJsx }
-        </ul>
-        <br/>
         <CreateCommentFormContainer projectId={ project.id } />
+        <br/>
+        <ul>
+          { commentsJsx.reverse() }
+        </ul>
       </div>
     );
   }

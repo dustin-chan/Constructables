@@ -6,7 +6,6 @@ export default (state = {}, action) => {
   let newState;
   switch(action.type) {
     case RECEIVE_PROJECT:
-    debugger
       if ( action.comments ) {
         return action.comments;
       } else {

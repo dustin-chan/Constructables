@@ -24,12 +24,22 @@ class CommentForm extends React.Component {
     });
   }
 
+  clearForm() {
+    this.setState({ body: '' })
+  }
+
   handleSubmit(e) {
     e.preventDefault();
 
     const projectId = this.props.comment.projectId;
 
-    this.props.processForm({ projectId, comment: { body: this.state.body } });
+    if ( this.props.formType === "create" ) {
+      this.props.processForm({ projectId, comment: { body: this.state.body } }).then( () => this.clearForm() );
+    } else if ( this.props.formType === "edit" ) {
+      this.props.updateBody( this.state.body );
+      this.props.processForm({ projectId, comment: this.state }).then( () => this.props.toggleEdit() );
+    }
+
   }
 
   renderErrors() {
@@ -43,11 +53,17 @@ class CommentForm extends React.Component {
   }
 
   render() {
+    let buttonText;
+    if ( this.props.formType === 'create' ) {
+      buttonText = 'Add Comment';
+    } else if ( this.props.formType === 'edit' ) {
+      buttonText = 'Edit Comment';
+    }
     return (
       <form className="comment-form" onSubmit={ this.handleSubmit }>
         { this.renderErrors() }
         <input type="textarea" value={ this.state.body } onChange={ this.update('body') }/>
-        <button className="add-comment-button">Add Comment</button>
+        <button className="submit-comment-button">{ buttonText }</button>
       </form>
     );
   }

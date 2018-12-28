@@ -11,7 +11,7 @@ export const updateComment = ({ comment }) => {
   return $.ajax({
     method: 'PATCH',
     url: `/api/projects/${ comment.projectId }/comments/${comment.id}`,
-    data: comment
+    data: {comment: comment}
   });
 };
 

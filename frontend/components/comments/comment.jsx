@@ -1,18 +1,28 @@
 import React from 'react';
+import EditCommentFormContainer from './edit_comment_form_container';
 
 class Step extends React.Component {
   constructor(props) {
     super(props);
     this.state = this.props.comment;
-    this.editComment = this.editComment.bind(this);
+    this.updateBody = this.updateBody.bind(this);
+    this.toggleEdit = this.toggleEdit.bind(this);
   }
 
   componentDidMount() {
 
   }
 
-  editComment() {
-    this.setState({editing: true});
+  updateBody(body) {
+    this.setState({ body })
+  }
+
+  toggleEdit() {
+    if ( this.state.editing ===  true ) {
+      this.setState({ editing: false });
+    } else {
+      setTimeout(() => this.setState({ editing: true }), 1000);
+    }
   }
 
   render() {
@@ -21,8 +31,8 @@ class Step extends React.Component {
     if ( this.props.currentUserId === this.state.authorId ) {
       commentButtons = (
         <div>
-          <button onClick={ this.editComment }>Edit Comment</button>
-          <button onClick={ () => this.props.deleteComment( this.state.projectId ) } />
+          <button className="comment-button edit-comment" onClick={ this.toggleEdit }>Edit</button>
+          <button className="comment-button delete-comment" onClick={ () => this.props.deleteComment( { projectId: this.state.projectId, commentId: this.state.id } ).then(() => window.location.reload()) }>Delete</button>
         </div>
       );
     } else {
@@ -31,7 +41,7 @@ class Step extends React.Component {
 
     if ( this.state.editing === true ) {
       return (
-        <EditCommentFormContainer comment={this.state} />
+        <EditCommentFormContainer comment={this.state} updateBody={this.updateBody} toggleEdit={this.toggleEdit} />
       )
     }
 
