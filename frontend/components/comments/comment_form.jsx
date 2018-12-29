@@ -59,10 +59,10 @@ class CommentForm extends React.Component {
     } else if ( this.props.formType === 'edit' ) {
       buttonText = 'Edit Comment';
     }
+    // { this.renderErrors() }
     return (
       <form className="comment-form" onSubmit={ this.handleSubmit }>
-        { this.renderErrors() }
-        <input type="textarea" value={ this.state.body } onChange={ this.update('body') }/>
+        <textarea className="comment-textarea" value={ this.state.body } onChange={ this.update('body') }/>
         <button className="submit-comment-button">{ buttonText }</button>
       </form>
     );

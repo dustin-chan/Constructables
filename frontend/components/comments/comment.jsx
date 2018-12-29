@@ -1,5 +1,6 @@
 import React from 'react';
 import EditCommentFormContainer from './edit_comment_form_container';
+import { Link } from 'react-router-dom';
 
 class Step extends React.Component {
   constructor(props) {
@@ -30,8 +31,8 @@ class Step extends React.Component {
 
     if ( this.props.currentUserId === this.state.authorId ) {
       commentButtons = (
-        <div>
-          <button className="comment-button edit-comment" onClick={ this.toggleEdit }>Edit</button>
+        <div className="comment-buttons">
+          <button className="comment-button edit-comment" onClick={ this.toggleEdit }>Edit</button>|
           <button className="comment-button delete-comment" onClick={ () => this.props.deleteComment( { projectId: this.state.projectId, commentId: this.state.id } ).then(() => window.location.reload()) }>Delete</button>
         </div>
       );
@@ -42,13 +43,19 @@ class Step extends React.Component {
     if ( this.state.editing === true ) {
       return (
         <EditCommentFormContainer comment={this.state} updateBody={this.updateBody} toggleEdit={this.toggleEdit} />
-      )
+      );
     }
 
     return (
-      <div className="comments-container">
-        <li key={`comment-body-${this.state.id}`} className="comment">{this.state.body}</li>
-        <li key={`comment-username=${this.state.id}`} className="comment-username">by {this.state.authorUsername}</li>
+      <div>
+        <div className="comments-container">
+          <li key={`comment-body-${this.state.id}`} className="comment">{this.state.body}</li>
+          <li key={`comment-username=${this.state.id}`} className="comment-username">
+            <Link to={`/users/${this.state.authorId}`}>
+              by {this.state.authorUsername}
+            </Link>
+          </li>
+        </div>
         { commentButtons }
       </div>
     );
