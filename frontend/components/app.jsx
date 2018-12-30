@@ -11,6 +11,7 @@ import ProjectShowContainer from './projects/project_show_container';
 import CreateProjectFormContainer from './project_form/create_project_form_container';
 import EditProjectFormContainer from './project_form/edit_project_form_container';
 import Home from './home/home';
+import Footer from './footer/footer';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 
 const App = ({store}) => {
@@ -41,7 +42,7 @@ const App = ({store}) => {
       <ProtectedRoute exact path="/projects/:projectId/edit" component={EditProjectFormContainer} />
       <ProtectedRoute exact path="/users/:userId" component={UserProfileContainer} />
 
-      <footer id="gbl-footer"></footer>
+      <Footer/>
     </div>
   );
 };

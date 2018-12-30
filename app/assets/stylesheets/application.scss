@@ -92,11 +92,20 @@ body {
   min-width: 1030px;
   line-height: 21px;
   background: #404040;
+  box-sizing: border-box;
   position: absolute;
-  display: block;
+  display: flex;
+  justify-content: space-around;
   z-index: 4;
   padding-top: 30px;
   height: 300px;
+}
+
+.in-link, .github-link {
+  margin-top: 20px;
+  width: 200px;
+  height: 200px;
+  filter: invert(1);
 }
 
 .hero {
