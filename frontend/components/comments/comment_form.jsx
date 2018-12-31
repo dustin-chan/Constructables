@@ -53,6 +53,10 @@ class CommentForm extends React.Component {
   }
 
   render() {
+    if ( !this.props.currentUserId ) {
+      return '';
+    }
+
     let buttonText;
     if ( this.props.formType === 'create' ) {
       buttonText = 'Add Comment';

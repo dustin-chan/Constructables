@@ -59,7 +59,7 @@ class ProjectShow extends React.Component {
 
     let commentsJsx;
     if ( comments ) {
-      debugger
+
       commentsJsx = comments.map((comment, idx) => {
         return (
           <div key={`comment-${idx}`}>
