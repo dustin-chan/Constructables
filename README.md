@@ -1,24 +1,24 @@
-# README
+# Constructables
+An Instructables-inspired DIY project-sharing web app. 
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+[Constructables Live](https://constructables-dac.herokuapp.com/#/)
 
-Things you may want to cover:
+## The Front-End 
 
-* Ruby version
+Built using a React, Redux, and JavaScript frontend, the site renders and updates dynamically.
+Modular architecture is utilized to minimize components to improve readability, reusability and scaling potential. 
 
-* System dependencies
+## The Back-End 
 
-* Configuration
+Built using a Ruby on Rails backend that communicates with a PostgreSQL database and interacts with Amazon Web Services S3 to store and retrieve user uploaded images. Nested attributes were used to create Steps each time a Project is created.
 
-* Database creation
+## Features 
 
-* Database initialization
+### User Auth 
+Login and signup using BCrypt encryption with contextual error messages. Both a front-end and back-end authentication system was set up to give the users a tailored and personal experience on the app.
 
-* How to run the test suite
+### Projects
+Projects can be created, edited, and deleted by users.  Users can add image files to projects and steps and edit them using the Quill-React text editor to style their text to their hearts content.
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### Comments
+Users can add, edit, and delete comments.  Comments are only creatable when logged in.  Comments are only editable when logged in as the author of the original comment.
