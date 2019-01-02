@@ -4,7 +4,6 @@ class Api::ProjectsController < ApplicationController
     @project = Project.new(project_params)
 
     @project.user_id = current_user.id
-    @project.featured = :false
 
     if @project.save
       render "api/projects/show"
@@ -41,7 +40,7 @@ class Api::ProjectsController < ApplicationController
   private
 
   def project_params
-    params.require(:project).permit(:title, :category, :description,
+    params.require(:project).permit(:title, :category, :description, :featured,
       :photo, steps_attributes: [:body, :photo, :photo_url] )
   end
 
