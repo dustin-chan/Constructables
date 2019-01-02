@@ -15,6 +15,10 @@ class ProjectShow extends React.Component {
 
   componentDidMount() {
     this.requestProject(this.props.match.params.projectId);
+    window.scrollTo(0, 0)
+  }
+
+  componentDidUpdate() {
   }
 
   render() {
@@ -44,7 +48,7 @@ class ProjectShow extends React.Component {
     let stepsJsx;
     if ( steps ) {
       stepsJsx = steps.map((step, idx) => {
-        if ( step.photoUrl ) {
+        if ( step && step.photoUrl ) {
           return (
             <div className="project-show-div" key={`step-${idx}`}>
               <img key={`step-div-${idx}`} src ={`${step.photoUrl}`} className={`step-parallax-show project-photo-${step.id}`} />

@@ -11,15 +11,17 @@ end
 if @project.steps
   json.steps do
     @project.steps.each do |step|
-      json.set! step.id do
-        json.id step.id
-        json.body step.body
-        if step.photo_url
-          json.photoUrl step.photo_url
-        elsif step.photo
-          json.photoUrl url_for(step.photo)
+      if step
+        json.set! step.id do
+          json.id step.id
+          json.body step.body
+          if step.photo_url
+            json.photoUrl step.photo_url
+          elsif step.photo.attached?
+            json.photoUrl url_for(step.photo)
+          end
+          json.projectId step.project_id
         end
-        json.projectId step.project_id
       end
     end
   end

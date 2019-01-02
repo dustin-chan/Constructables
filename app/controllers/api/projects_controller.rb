@@ -1,6 +1,5 @@
 class Api::ProjectsController < ApplicationController
   def create
-
     @project = Project.new(project_params)
 
     @project.user_id = current_user.id
@@ -25,7 +24,7 @@ class Api::ProjectsController < ApplicationController
   def update
     @project = Project.find(params[:id])
 
-    if @project.update_attributes(project_params)
+    if @project.update_attributes(update_project_params)
       render "api/projects/show"
     else
       render json: @project.errors.full_messages, status: 422
@@ -40,6 +39,11 @@ class Api::ProjectsController < ApplicationController
   private
 
   def project_params
+    params.require(:project).permit(:title, :category, :description, :featured,
+      :photo, :steps_attributes => [:body, :photo] )
+  end
+
+  def update_project_params
     params.require(:project).permit(:title, :category, :description, :featured,
       :photo, steps_attributes: [:body, :photo, :photo_url] )
   end
