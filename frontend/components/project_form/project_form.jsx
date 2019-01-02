@@ -89,7 +89,7 @@ class ProjectForm extends React.Component {
     if ( this.props.formType === 'edit' ) data = { formData: formData, id: this.props.project.id };
     else data = formData;
 
-    this.props.processForm(data).then(res => setTimeout(this.props.history.push(`/`), 2500));
+    this.props.processForm(data).then(res => setTimeout(this.props.history.push(`/projects/${res.project.id}`), 2500));
   }
 
   addStep() {
